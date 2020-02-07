@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #We need to oud apps here
+    # We need to oud apps here
     'posts',
 ]
 
@@ -75,9 +75,9 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#python manage.py makemigrations
-#python manage.py migrate
-#Local Configuration by Yasoo
+# python manage.py makemigrations
+# python manage.py migrate
+# Local Configuration by Yasoo
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -86,7 +86,6 @@ DATABASES = {
         'PASSWORD': '',
     }
 }
-
 
 
 # Password validation
@@ -126,3 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staic')
