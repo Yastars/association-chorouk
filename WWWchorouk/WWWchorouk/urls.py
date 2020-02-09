@@ -20,9 +20,10 @@ from crmapp import views
 
 
 urlpatterns = [
+    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path(r'accounts', views.AccountAPIView.as_view(), name='account-list'),
-    path(r'posts', views.PostAPIView.as_view(), name='posts-list'),
-    path(r'games', views.GameAPIView.as_view(), name='games-list'),
-    path(r'gameRegistrations', views.GameRegistrationAPIView.as_view(), name='game-registrations-list'),
+    path(r'accounts/', views.AccountAPIView.as_view(), name='account-list'),
+    path(r'posts/', views.PostAPIView.as_view(), name='posts-list'),
+    path(r'games/', views.GameAPIView.as_view(), name='games-list'),
+    path(r'gameRegistrations/', views.GameRegistrationAPIView.as_view(), name='game-registrations-list'),
 ]

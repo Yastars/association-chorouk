@@ -6,6 +6,10 @@ from .serializers import AccountSerializer, PostSerializer, GameSerializer, Game
 
 # Create your views here.
 
+def index(request):
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'index.html')
+
 class AccountAPIView(generics.ListCreateAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer

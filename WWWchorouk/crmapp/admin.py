@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Account, Post, Game, GameRegistration
+
+admin.site.register(Account)
+admin.site.register(Post)
+admin.site.register(Game)
+admin.site.register(GameRegistration)
