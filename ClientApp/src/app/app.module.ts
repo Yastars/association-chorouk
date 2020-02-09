@@ -11,6 +11,9 @@ import { GameRegistrationComponent } from './game-registration/game-registration
 import { PostListComponent } from './post-list/post-list.component';
 import { PostComponent } from './post/post.component';
 
+/* By Yasoo */
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
