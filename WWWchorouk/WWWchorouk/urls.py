@@ -14,11 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.conf.urls.static import static
-from django.conf import settings
+from django.urls import path
+from crmapp import views
+
+
 
 urlpatterns = [
-    path('', include('posts.urls', namespace='posts')),
+    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path(r'accounts/', views.AccountAPIView.as_view(), name='account-list'),
+    path(r'posts/', views.PostAPIView.as_view(), name='posts-list'),
+    path(r'games/', views.GameAPIView.as_view(), name='games-list'),
+    path(r'gameRegistrations/', views.GameRegistrationAPIView.as_view(), name='game-registrations-list'),
+]
