@@ -3,20 +3,14 @@ from rest_framework import serializers
 from .models import Account, Post, Game, GameRegistration
 from django.contrib.auth.models import User
 
-
-
-class UsernameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = "__all__"
-
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         fields = "__all__"
 
 class PostSerializer(serializers.ModelSerializer):
-    publishedBy = UsernameSerializer(data="username")
+    publishedByUsername = serializers.CharField(source='publishedBy.username', read_only=True)
+    createdAt = serializers.DateTimeField(format="%b %d %Y", read_only=True)
     class Meta:
         model = Post
         fields = "__all__"
