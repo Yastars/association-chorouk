@@ -1,1 +1,26 @@
-<p>post-list works!</p>
+<article *ngFor="let post of allPosts" class="row blog_item">
+    <div class="col-md-3">
+        <div class="blog_info text-right">
+             <div class="post_tag">
+                 <a href="#">Association,</a>
+                 <a class="active" href="#">{{ post.category }}</a>
+             </div>
+             <ul class="blog_meta list">
+                 <li><a href="#">{{ post.publishedBy }}<i class="lnr lnr-user"></i></a></li>
+                 <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li>
+                 <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                 <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+             </ul>
+         </div>
+    </div>
+     <div class="col-md-9">
+         <div class="blog_post">
+             <img src="../../../assets/img/blog/main-blog/m-blog-1.jpg" alt="">
+             <div class="blog_details">
+                 <a ><h2>{{ post.title }}</h2></a>
+                 <p>{{ post.preview }}</p>
+                 <a class="blog_btn">View More</a>
+             </div>
+         </div>
+     </div>
+ </article>

@@ -17,6 +17,9 @@ import { PostComponent } from './Components/post/post.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { AboutPageComponent } from './Pages/about-page/about-page.component';
+import { BlogPageComponent } from './Pages/blog-page/blog-page.component';
+import { SingleBlogPageComponent } from './Pages/blog-page/single-blog-page/single-blog-page.component';
+
 
 @NgModule({
   declarations: [
@@ -30,11 +33,14 @@ import { AboutPageComponent } from './Pages/about-page/about-page.component';
     PostComponent,
     DashboardComponent,
     HeaderComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    BlogPageComponent,
+    SingleBlogPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

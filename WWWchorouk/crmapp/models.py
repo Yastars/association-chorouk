@@ -58,6 +58,7 @@ class Post(models.Model):
     editedBy = models.ForeignKey(User, related_name='post_last_edited_by', on_delete=models.CASCADE)
     createdAt = models.DateTimeField("Created At", auto_now_add=True)
     
+    
     def __str__(self):
         return self.title
 
