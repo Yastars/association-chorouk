@@ -137,3 +137,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staic')
 #Yasoo
 #Enabling CROS
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS': 'crmapp.pagination.HeaderPagination',
+    # 'PAGE_SIZE': 5
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 1
+}
