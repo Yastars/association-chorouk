@@ -1,0 +1,26 @@
+<article class="row blog_item">
+    <div class="col-md-3">
+        <div class="blog_info text-right">
+            <div class="post_tag">
+                <a href="#">Association,</a>
+                <a class="active" href="#">{{ post.category }}</a>
+            </div>
+            <ul class="blog_meta list">
+                <li><a href="#">{{ post.publishedByUsername }}<i class="lnr lnr-user"></i></a></li>
+                <li><a href="#">{{ post.createdAt }}<i class="lnr lnr-calendar-full"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="blog_post">
+            <img height="360px" width="560px" src="{{ post.picture }}" alt="">
+            <div class="blog_details">
+                <a>
+                    <h2>{{ post.title }}</h2>
+                </a>
+                <p>{{ post.preview }}</p>
+                <a class="blog_btn">View More</a>
+            </div>
+        </div>
+    </div>
+</article>

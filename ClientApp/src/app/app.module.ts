@@ -12,7 +12,7 @@ import { RegistrationComponent } from './Components/registration/registration.co
 import { GameListComponent } from './Components/game-list/game-list.component';
 import { GameComponent } from './Components/game/game.component';
 import { GameRegistrationComponent } from './Components/game-registration/game-registration.component';
-import { PostListComponent } from './Components/post-list/post-list.component';
+import { SinglePostComponent } from './Components/single-post/single-post.component';
 import { PostComponent } from './Components/post/post.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { HeaderComponent } from './Components/header/header.component';
@@ -29,7 +29,7 @@ import { SingleBlogPageComponent } from './Pages/blog-page/single-blog-page/sing
     GameListComponent,
     GameComponent,
     GameRegistrationComponent,
-    PostListComponent,
+    SinglePostComponent,
     PostComponent,
     DashboardComponent,
     HeaderComponent,
