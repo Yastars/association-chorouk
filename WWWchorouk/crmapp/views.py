@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from rest_framework import generics
 from .models import Account, Post, Game, GameRegistration
-from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer
+from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer, PostBaseSerializer
 
 from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -41,3 +43,10 @@ class FileUploadView(APIView):
           return Response(file_serializer.data, status=status.HTTP_201_CREATED)
       else:
           return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def getOnePost(request, pk):
+    instance = Post.objects.get(pk=pk)
+    serializer = PostBaseSerializer(instance)
+    return Response(serializer.data)

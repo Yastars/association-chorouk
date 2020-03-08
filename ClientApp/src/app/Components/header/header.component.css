@@ -2,3 +2,21 @@
   background-color: black;
   position: fixed;
 }
+
+.logo_h img{
+  border-radius: 50%;
+  height: 80px;
+  width: 81px;
+  object-fit: cover;
+  object-position: -18px;
+}
+
+.logo-label a {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 80px;
+  text-transform: uppercase;
+  color:#ffffff;
+  padding: 0px;
+  display: inline-block;
+}
