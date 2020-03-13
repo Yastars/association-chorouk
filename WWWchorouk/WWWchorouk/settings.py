@@ -25,7 +25,7 @@ SECRET_KEY = '=cjc8ueo3p+skhfmdl4####p93#4erg1ssi6t-qygtm9y^*65w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['chorouk-app.herokuapp.com']
 
 
 # Application definition
