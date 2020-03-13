@@ -1,1 +1,1 @@
-web: pipenv run python WWWchorouk/manage.py runserver
+web: gunicorn WWWchorouk.wsgi --log-file –
