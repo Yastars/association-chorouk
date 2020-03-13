@@ -19,7 +19,7 @@
                     <h2>{{ post.title }}</h2>
                 </a>
                 <p>{{ post.preview }}</p>
-                <a class="blog_btn">View More</a>
+                <a [routerLink]="['../post', post.id]" class="blog_btn pointer">View More</a>
             </div>
         </div>
     </div>

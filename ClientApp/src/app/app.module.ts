@@ -18,7 +18,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { AboutPageComponent } from './Pages/about-page/about-page.component';
 import { BlogPageComponent } from './Pages/blog-page/blog-page.component';
-import { SingleBlogPageComponent } from './Pages/blog-page/single-blog-page/single-blog-page.component';
+import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-page.component';
 
 
 @NgModule({

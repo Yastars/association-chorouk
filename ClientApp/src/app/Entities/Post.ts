@@ -4,7 +4,6 @@ export class Post {
     id: number;
     name: string;
     publisher: string;
-
     title: string;
     preview: string;
     content: string;

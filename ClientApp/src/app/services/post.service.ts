@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ServiceBase } from './service-base.service';
 import { Observable } from 'rxjs';
+import { Post } from '../Entities/Post';
 
 export class PostModel {
   id: 28;
@@ -35,7 +36,7 @@ export class PostService {
     this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   }
 
-  getPageOfPosts(nbPage: number): Observable<HttpResponse<PostPageModel>> {
+  getAllPosts(nbPage: number): Observable<HttpResponse<PostPageModel>> {
     return this.http.get<PostPageModel>(
       // Edit this shit
       this.baseUrl + '/posts/?format=json&page=' + nbPage,
@@ -44,5 +45,14 @@ export class PostService {
         headers: this.headers
       }
     );
+  }
+
+  getOnePost(id: string): Observable<HttpResponse<PostModel>> {
+    return this.http.get<PostModel>(
+      `${this.baseUrl}/posts/${id}`, {
+        observe: 'response',
+        headers: this.headers
+      }
+    )
   }
 }
