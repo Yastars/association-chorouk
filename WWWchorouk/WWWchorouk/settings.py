@@ -138,6 +138,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staic')
 #Enabling CROS
 CORS_ORIGIN_ALLOW_ALL = True
 
+#Yasoo
+#Deploy
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+DEBUG = False
+
 
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'crmapp.pagination.HeaderPagination',
