@@ -1,0 +1,1 @@
+web: gunicorn WWWchorouk/WWWchorouk.wsgi --log-file –
