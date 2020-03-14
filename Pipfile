@@ -13,7 +13,6 @@ pillow = "*"
 mysqlclient = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
-gunicorn = "*"
 
 [requires]
 python_version = "3.8"
