@@ -85,12 +85,21 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 # python manage.py makemigrations
 # python manage.py migrate
 # Local Configuration by Yasoo
+#DATABASES = {
+    # 'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'chorouk-db',
+        # 'USER': 'root',
+        # 'PASSWORD': '',
+    # }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'chorouk-db',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME': 'heroku_567be33c13a68fe',
+        'USER': 'b1ab5aeae8346f',
+        'PASSWORD': '8e25e00a',
     }
 }
 
