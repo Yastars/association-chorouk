@@ -184,3 +184,4 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
