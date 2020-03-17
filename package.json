@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "12.16.x"
-  }
+  },
 "scripts": {
     "install": "(cd ClientApp && npm i)",   
     "heroku-postbuild": "cd ClientApp && npm run build-prod && mv dist/frontend ../backend/",
