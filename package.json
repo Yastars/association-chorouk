@@ -1,4 +1,6 @@
 {
+"name": "chorouk",
+"version": "0.0.0",
 "scripts": {
     "install": "(cd ClientApp && npm i)",   
     "heroku-postbuild": "cd ClientApp && npm run build-prod && mv dist/frontend ../backend/",
