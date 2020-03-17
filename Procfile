@@ -1,3 +1,3 @@
 python manage.py migrate
 
-web: gunicorn WWWchorouk.wsgi --log-file – 
+web: gunicorn ServerApp.WWWchorouk.wsgi --log-file – 
