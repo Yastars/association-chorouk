@@ -1,5 +1,7 @@
+{
 "scripts": {
     "install": "(cd ClientApp && npm i)",   
     "heroku-postbuild": "cd ClientApp && npm run build-prod && mv dist/frontend ../backend/",
     "start": "if [ \"$NODE_ENV\" == \"production\" ]; then cd ServerApp && python manage.py runserver; else cd ServerApp && python manage.py runserver & (cd ClientApp && npm start); fi"
+}
 }
