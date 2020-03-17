@@ -1,6 +1,10 @@
 {
-"name": "chorouk",
-"version": "0.0.0",
+  "name": "chorouk-app",
+  "description": "Chorouk application",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.16.x"
+  }
 "scripts": {
     "install": "(cd ClientApp && npm i)",   
     "heroku-postbuild": "cd ClientApp && npm run build-prod && mv dist/frontend ../backend/",
