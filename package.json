@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "cd ClientApp && ng",
     "start": "cd ClientApp && ng serve",
-    "build": "cd ClientApp && ng build",
-    "test": "cd ClientApp && ng test",
-    "lint": "cd ClientApp && ng lint",
-    "e2e": "cd ClientApp && ng e2e"
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
