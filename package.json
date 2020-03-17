@@ -6,7 +6,7 @@
     "node": "12.16.x"
   },
 "scripts": {
-    "install": "(cd ClientApp && npm i)",   
+    "install": "(cd ClientApp && npm i)" 
 
 }
 }
