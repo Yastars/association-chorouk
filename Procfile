@@ -1,3 +1,3 @@
 # Procfile
-release: python manage.py migrate --noinput
+python manage.py migrate
 web: gunicorn WWWchorouk.wsgi
