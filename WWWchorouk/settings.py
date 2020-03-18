@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 's4tes66lg8f20ykf',
+        'NAME': 'if0ck476y7axojpg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         'USER': 'cyghxuwdup96qdhw',
         'PASSWORD': 'x5ej5qyh5xv0cbhy',
     }
