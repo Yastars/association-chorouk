@@ -100,9 +100,9 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_567be33c13a68fe',
-        'USER': 'b1ab5aeae8346f',
-        'PASSWORD': '8e25e00a',
+        'NAME': 's4tes66lg8f20ykf',
+        'USER': 'cyghxuwdup96qdhw',
+        'PASSWORD': 'x5ej5qyh5xv0cbhy',
     }
 }
 
