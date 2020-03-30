@@ -26,7 +26,7 @@ SECRET_KEY = '=cjc8ueo3p+skhfmdl4####p93#4erg1ssi6t-qygtm9y^*65w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['chorouk-app.herokuapp.com']
+ALLOWED_HOSTS = ['chorouk-app.herokuapp.com', 'localhost:8000', '0.0.0.0:8000', 'localhost', '0.0.0.0', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     # We need to oud apps here
     'rest_framework',
     'crmapp',
-    'corsheaders',  
+    'corsheaders', 
+    # Deploy
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles', 
 ]
 
 MIDDLEWARE = [
@@ -56,10 +58,8 @@ MIDDLEWARE = [
 	'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = False
 
 ROOT_URLCONF = 'WWWchorouk.urls'
 
@@ -88,23 +88,23 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 # python manage.py makemigrations
 # python manage.py migrate
 # Local Configuration by Yasoo
-#DATABASES = {
-    # 'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'chorouk-db',
-        # 'USER': 'root',
-        # 'PASSWORD': '',
-    # }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_567be33c13a68fe',
-        'USER': 'b1ab5aeae8346f',
-        'PASSWORD': '8e25e00a',
+        'NAME': 'chorouk-db',
+        'USER': 'root',
+        'PASSWORD': '',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_567be33c13a68fe',
+#         'USER': 'b1ab5aeae8346f',
+#         'PASSWORD': '8e25e00a',
+#     }
+# }
 
 
 # Password validation
@@ -156,9 +156,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 #Yasoo
 #Deploy
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
 #DEBUG = False
 
 
@@ -173,33 +173,17 @@ REST_FRAMEWORK = {
     'DATE_INPUT_FORMATS': "%Y-%m-%d",
 }
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Start Test Deploy
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_STORAGE = 'spa.storage.SPAStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-#test yasoo
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-#test yasoo
-
+# End Test Deploy
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+# django_heroku.settings(locals())
+# del DATABASES['default']['OPTIONS']['sslmode']
