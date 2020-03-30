@@ -58,8 +58,8 @@ MIDDLEWARE = [
 	'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SECURE_SSL_REDIRECT = False
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = False
 
 ROOT_URLCONF = 'WWWchorouk.urls'
 
@@ -156,9 +156,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 #Yasoo
 #Deploy
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 #DEBUG = False
 
 
@@ -185,5 +185,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # End Test Deploy
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
