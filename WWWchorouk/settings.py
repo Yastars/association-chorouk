@@ -178,7 +178,7 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'crmapp.pagination.HeaderPagination',
     # 'PAGE_SIZE': 5
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 1,
+    'PAGE_SIZE': 6,
     'DATETIME_FORMAT': "%Y-%m-%d",
     'DATE_FORMAT': "%Y-%m-%d",
     'DATETIME_INPUT_FORMATS': "%Y-%m-%d",
