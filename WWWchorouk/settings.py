@@ -185,8 +185,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # End Test Deploy
 
 # Activate Django-Heroku.
- django_heroku.settings(locals())
- STATIC_URL = '/assets/'
-STATICFILES_STORAGE = 'spa.storage.SPAStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
