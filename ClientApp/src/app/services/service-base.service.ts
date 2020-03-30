@@ -10,7 +10,7 @@ export class ServiceBase {
       : this.baseUrl;
 
     this.baseUrl = location.origin.includes('chorouk')
-      ? 'chorouk-app.herokuapp.com'
+      ? 'https://chorouk-app.herokuapp.com'
       : this.baseUrl;
 
     if (location.origin.includes('chorouk')){

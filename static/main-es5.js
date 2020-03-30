@@ -5969,7 +5969,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.baseUrl = 'chorouk-app.herokuapp.com';
         this.baseUrl = location.origin.includes('localhost') ? 'http://localhost:8000' : this.baseUrl;
-        this.baseUrl = location.origin.includes('chorouk') ? 'chorouk-app.herokuapp.com' : this.baseUrl;
+        this.baseUrl = location.origin.includes('chorouk') ? 'https://chorouk-app.herokuapp.com' : this.baseUrl;
 
         if (location.origin.includes('chorouk')) {
           console.log('PRODUCTION ENVIRONMENT');
