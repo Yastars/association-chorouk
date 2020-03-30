@@ -185,5 +185,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # End Test Deploy
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+# django_heroku.settings(locals())
+# del DATABASES['default']['OPTIONS']['sslmode']
