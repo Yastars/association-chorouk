@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ServiceBase {
-  baseUrl = 'http://localhost:8000';
+  baseUrl = 'chorouk-app.herokuapp.com';
 
   constructor() {
     this.baseUrl = location.origin.includes('localhost')
@@ -12,6 +12,10 @@ export class ServiceBase {
     this.baseUrl = location.origin.includes('chorouk')
       ? 'chorouk-app.herokuapp.com'
       : this.baseUrl;
+
+    if (location.origin.includes('chorouk')){
+      console.log('PRODUCTION ENVIRONMENT');
+    }
   }
 
   getBaseUrl() {
