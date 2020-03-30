@@ -2037,21 +2037,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/post.service */ "./src/app/services/post.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var src_app_services_service_base_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/service-base.service */ "./src/app/services/service-base.service.ts");
+
 
 
 
 
 class SingleBlogPageComponent {
-    constructor(postService, route) {
+    constructor(postService, route, serviceBase) {
         this.postService = postService;
         this.route = route;
+        this.serviceBase = serviceBase;
     }
     ngOnInit() {
+        this.baseUrl = this.serviceBase.getBaseUrl();
         this.id = this.route.snapshot.paramMap.get('id');
         this.postService.getOnePost(this.id).subscribe(result => this.post = result.body, error => console.error(`The item ${this.id} doesn't exist!`));
     }
 }
-SingleBlogPageComponent.ɵfac = function SingleBlogPageComponent_Factory(t) { return new (t || SingleBlogPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__["PostService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
+SingleBlogPageComponent.ɵfac = function SingleBlogPageComponent_Factory(t) { return new (t || SingleBlogPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__["PostService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_service_base_service__WEBPACK_IMPORTED_MODULE_3__["ServiceBase"])); };
 SingleBlogPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SingleBlogPageComponent, selectors: [["app-single-blog-page"]], decls: 360, vars: 8, consts: [[1, "banner_area"], [1, "banner_inner", "d-flex", "align-items-center"], ["data-stellar-ratio", "0.9", "data-stellar-vertical-offset", "0", "data-background", "", 1, "overlay", "bg-parallax"], [1, "container"], [1, "banner_content", "text-center"], [1, "blog_area", "single-post-area", "section_gap"], [1, "row"], [1, "col-lg-8", "posts-list"], [1, "single-post", "row"], [1, "col-lg-12"], [1, "feature-img"], ["height", "360px", "width", "560px", "alt", "", 3, "src"], [1, "col-lg-3", "col-md-3"], [1, "blog_info", "text-right"], [1, "post_tag"], ["href", "#"], ["href", "#", 1, "active"], [1, "blog_meta", "list"], [1, "lnr", "lnr-user"], [1, "lnr", "lnr-calendar-full"], [1, "social-links"], [1, "fa", "fa-facebook"], [1, "fa", "fa-twitter"], [1, "fa", "fa-github"], [1, "fa", "fa-behance"], [1, "col-lg-9", "col-md-9", "blog_details"], [1, "excert"], [1, "quotes"], [1, "col-6"], ["src", "assets/img/blog/post-img1.jpg", "alt", "", 1, "img-fluid"], ["src", "assets/img/blog/post-img2.jpg", "alt", "", 1, "img-fluid"], [1, "col-lg-12", "mt-25"], [1, "navigation-area"], [1, "col-lg-6", "col-md-6", "col-12", "nav-left", "flex-row", "d-flex", "justify-content-start", "align-items-center"], [1, "thumb"], ["src", "assets/img/blog/prev.jpg", "alt", "", 1, "img-fluid"], [1, "arrow"], [1, "lnr", "text-white", "lnr-arrow-left"], [1, "detials"], [1, "col-lg-6", "col-md-6", "col-12", "nav-right", "flex-row", "d-flex", "justify-content-end", "align-items-center"], [1, "lnr", "text-white", "lnr-arrow-right"], ["src", "assets/img/blog/next.jpg", "alt", "", 1, "img-fluid"], [1, "comments-area"], [1, "comment-list"], [1, "single-comment", "justify-content-between", "d-flex"], [1, "user", "justify-content-between", "d-flex"], ["src", "assets/img/blog/c1.jpg", "alt", ""], [1, "desc"], [1, "date"], [1, "comment"], [1, "reply-btn"], ["href", "", 1, "btn-reply", "text-uppercase"], [1, "comment-list", "left-padding"], ["src", "assets/img/blog/c2.jpg", "alt", ""], ["src", "assets/img/blog/c3.jpg", "alt", ""], ["src", "assets/img/blog/c4.jpg", "alt", ""], ["src", "assets/img/blog/c5.jpg", "alt", ""], [1, "comment-form"], [1, "form-group", "form-inline"], [1, "form-group", "col-lg-6", "col-md-6", "name"], ["type", "text", "id", "name", "placeholder", "Enter Name", "onfocus", "this.placeholder = ''", "onblur", "this.placeholder = 'Enter Name'", 1, "form-control"], [1, "form-group", "col-lg-6", "col-md-6", "email"], ["type", "email", "id", "email", "placeholder", "Enter email address", "onfocus", "this.placeholder = ''", "onblur", "this.placeholder = 'Enter email address'", 1, "form-control"], [1, "form-group"], ["type", "text", "id", "subject", "placeholder", "Subject", "onfocus", "this.placeholder = ''", "onblur", "this.placeholder = 'Subject'", 1, "form-control"], ["rows", "5", "name", "message", "placeholder", "Messege", "onfocus", "this.placeholder = ''", "onblur", "this.placeholder = 'Messege'", "required", "", 1, "form-control", "mb-10"], ["href", "#", 1, "primary-btn", "primary_btn"], [1, "col-lg-4"], [1, "blog_right_sidebar"], [1, "single_sidebar_widget", "search_widget"], [1, "input-group"], ["type", "text", "placeholder", "Search Posts", 1, "form-control"], [1, "input-group-btn"], ["type", "button", 1, "btn", "btn-default"], [1, "lnr", "lnr-magnifier"], [1, "br"], [1, "single_sidebar_widget", "author_widget"], ["src", "assets/img/blog/author.png", "alt", "", 1, "author_img", "rounded-circle"], [1, "social_icon"], [1, "single_sidebar_widget", "popular_post_widget"], [1, "widget_title"], [1, "media", "post_item"], ["src", "assets/img/blog/popular-post/post1.jpg", "alt", "post"], [1, "media-body"], ["href", "single-blog.html"], ["src", "assets/img/blog/popular-post/post2.jpg", "alt", "post"], ["src", "assets/img/blog/popular-post/post3.jpg", "alt", "post"], ["src", "assets/img/blog/popular-post/post4.jpg", "alt", "post"], [1, "single_sidebar_widget", "ads_widget"], ["src", "assets/img/blog/add.jpg", "alt", "", 1, "img-fluid"], [1, "single_sidebar_widget", "post_category_widget"], [1, "list", "cat-list"], ["href", "#", 1, "d-flex", "justify-content-between"], [1, "single-sidebar-widget", "newsletter_widget"], [1, "form-group", "d-flex", "flex-row"], [1, "input-group-prepend"], [1, "input-group-text"], ["aria-hidden", "true", 1, "fa", "fa-envelope"], ["type", "text", "id", "inlineFormInputGroup", "placeholder", "Enter email", "onfocus", "this.placeholder = ''", "onblur", "this.placeholder = 'Enter email'", 1, "form-control"], ["href", "#", 1, "bbtns"], [1, "text-bottom"], [1, "single-sidebar-widget", "tag_cloud_widget"], [1, "list"]], template: function SingleBlogPageComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -2654,7 +2658,7 @@ SingleBlogPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.post.preview);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("src", "http://localhost:8000", ctx.post.picture, "", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.baseUrl + ctx.post.picture, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx.post.category, ",");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -2673,7 +2677,7 @@ SingleBlogPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
                 templateUrl: './single-blog-page.component.html',
                 styleUrls: ['./single-blog-page.component.css']
             }]
-    }], function () { return [{ type: src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__["PostService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }]; }, null); })();
+    }], function () { return [{ type: src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__["PostService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }, { type: src_app_services_service_base_service__WEBPACK_IMPORTED_MODULE_3__["ServiceBase"] }]; }, null); })();
 
 
 /***/ }),
@@ -2935,13 +2939,16 @@ __webpack_require__.r(__webpack_exports__);
 
 class ServiceBase {
     constructor() {
-        this.baseUrl = 'http://localhost:8000';
+        this.baseUrl = 'chorouk-app.herokuapp.com';
         this.baseUrl = location.origin.includes('localhost')
             ? 'http://localhost:8000'
             : this.baseUrl;
-        this.baseUrl = location.origin.includes('hosting-name')
-            ? 'hosting-url:'
+        this.baseUrl = location.origin.includes('chorouk')
+            ? 'chorouk-app.herokuapp.com'
             : this.baseUrl;
+        if (location.origin.includes('chorouk')) {
+            console.log('PRODUCTION ENVIRONMENT');
+        }
     }
     getBaseUrl() {
         return this.baseUrl;

@@ -4171,15 +4171,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_services_service_base_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/service-base.service */
+    "./src/app/services/service-base.service.ts");
 
     var SingleBlogPageComponent =
     /*#__PURE__*/
     function () {
-      function SingleBlogPageComponent(postService, route) {
+      function SingleBlogPageComponent(postService, route, serviceBase) {
         _classCallCheck(this, SingleBlogPageComponent);
 
         this.postService = postService;
         this.route = route;
+        this.serviceBase = serviceBase;
       }
 
       _createClass(SingleBlogPageComponent, [{
@@ -4187,6 +4194,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ngOnInit() {
           var _this2 = this;
 
+          this.baseUrl = this.serviceBase.getBaseUrl();
           this.id = this.route.snapshot.paramMap.get('id');
           this.postService.getOnePost(this.id).subscribe(function (result) {
             return _this2.post = result.body;
@@ -4200,7 +4208,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     SingleBlogPageComponent.ɵfac = function SingleBlogPageComponent_Factory(t) {
-      return new (t || SingleBlogPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__["PostService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]));
+      return new (t || SingleBlogPageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__["PostService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_service_base_service__WEBPACK_IMPORTED_MODULE_3__["ServiceBase"]));
     };
 
     SingleBlogPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -5413,7 +5421,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("src", "http://localhost:8000", ctx.post.picture, "", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", ctx.baseUrl + ctx.post.picture, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
@@ -5453,6 +5461,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           type: src_app_services_post_service__WEBPACK_IMPORTED_MODULE_1__["PostService"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+        }, {
+          type: src_app_services_service_base_service__WEBPACK_IMPORTED_MODULE_3__["ServiceBase"]
         }];
       }, null);
     })();
@@ -5957,9 +5967,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function ServiceBase() {
         _classCallCheck(this, ServiceBase);
 
-        this.baseUrl = 'http://localhost:8000';
+        this.baseUrl = 'chorouk-app.herokuapp.com';
         this.baseUrl = location.origin.includes('localhost') ? 'http://localhost:8000' : this.baseUrl;
-        this.baseUrl = location.origin.includes('hosting-name') ? 'hosting-url:' : this.baseUrl;
+        this.baseUrl = location.origin.includes('chorouk') ? 'chorouk-app.herokuapp.com' : this.baseUrl;
+
+        if (location.origin.includes('chorouk')) {
+          console.log('PRODUCTION ENVIRONMENT');
+        }
       }
 
       _createClass(ServiceBase, [{
