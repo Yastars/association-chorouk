@@ -9,8 +9,8 @@ export class ServiceBase {
       ? 'http://localhost:8000'
       : this.baseUrl;
 
-    this.baseUrl = location.origin.includes('hosting-name')
-      ? 'hosting-url:'
+    this.baseUrl = location.origin.includes('chorouk')
+      ? 'chorouk-app.herokuapp.com'
       : this.baseUrl;
   }
 
