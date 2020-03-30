@@ -179,7 +179,7 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_URL = '/assets/'
 STATICFILES_STORAGE = 'spa.storage.SPAStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, '/staic/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # End Test Deploy
