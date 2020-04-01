@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     # Deploy
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles', 
+    # Cloudinary storage for picture upload
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -194,3 +197,10 @@ REST_FRAMEWORK = {
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hu5jnobc0',
+    'API_KEY': '667565971498513',
+    'API_SECRET': 'hcH9GKC14GLyzespACx51vwLHbc',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
