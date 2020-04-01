@@ -30,8 +30,8 @@ wrapt = "==1.11.2"
 Django = "==3.0.4"
 Pillow = "==7.0.0"
 django-spa = ""
-cloudinary=="1.17.0"
-django-cloudinary-storage=="0.2.3"
+cloudinary="1.17.0"
+django-cloudinary-storage="0.2.3"
 
 
 
