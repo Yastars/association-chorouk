@@ -195,8 +195,6 @@ REST_FRAMEWORK = {
 # End Test Deploy
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'hu5jnobc0',
@@ -204,3 +202,9 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'hcH9GKC14GLyzespACx51vwLHbc',
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
+
+
