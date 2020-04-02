@@ -17,7 +17,7 @@ psycopg2==2.8.4
 pycodestyle==2.5.0
 pylint==2.4.4
 pytz==2019.3
-six==1.14.0
+# six==1.14.0
 sqlparse==0.3.1
 whitenoise==5.0.1
 wrapt==1.11.2
