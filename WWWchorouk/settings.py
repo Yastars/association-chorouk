@@ -100,14 +100,7 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_567be33c13a68fe',
-        'USER': 'b1ab5aeae8346f',
-        'PASSWORD': '8e25e00a',
-    }
-}
+
 
 
 # Password validation
@@ -202,6 +195,15 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'hcH9GKC14GLyzespACx51vwLHbc',
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'heroku_567be33c13a68fe',
+        'USER': 'b1ab5aeae8346f',
+        'PASSWORD': '8e25e00a',
+    }
+}
 
 
 django_heroku.settings(locals())
