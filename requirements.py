@@ -21,6 +21,6 @@ six==1.14.0
 sqlparse==0.3.1
 whitenoise==5.0.1
 wrapt==1.11.2
-cloudinary==1.20.0
+cloudinary==0.2.1
 django-cloudinary-storage==0.2.3
 django-spa
