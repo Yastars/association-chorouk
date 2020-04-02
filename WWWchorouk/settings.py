@@ -198,6 +198,10 @@ REST_FRAMEWORK = {
 
 # Activate Django-Heroku.
 
+CLOUDINARY = {
+    'max_length': 200,
+}
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'hu5jnobc0',
     'API_KEY': '667565971498513',
