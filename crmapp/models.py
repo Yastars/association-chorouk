@@ -54,7 +54,7 @@ class Post(models.Model):
     preview = models.TextField(max_length=600, verbose_name='Preview')
     content = models.TextField(max_length=2000, verbose_name='Detail Text')
     #picture = models.FileField(blank=False, null=True)
-    cloudinary.models.CloudinaryField('image')
+    picture = cloudinary.models.CloudinaryField('image')
     category = models.CharField(max_length=64, choices=CATEGORY_POSTS)
     publishedBy = models.ForeignKey(User, related_name='post_published_by', on_delete=models.CASCADE)
     editedBy = models.ForeignKey(User, related_name='post_last_edited_by', on_delete=models.CASCADE)
