@@ -94,15 +94,9 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< Updated upstream
-        'NAME': 'heroku_03966fce2f9d218',
-        'USER': 'bc3a5f084da40d',
-        'PASSWORD': 'f97206b6',
-=======
         'NAME': 'chorouk-db',
         'USER': 'root',
         'PASSWORD': '',
->>>>>>> Stashed changes
     }
 }
 
