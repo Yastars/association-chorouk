@@ -91,23 +91,29 @@ WSGI_APPLICATION = 'WWWchorouk.wsgi.application'
 # python manage.py makemigrations
 # python manage.py migrate
 # Local Configuration by Yasoo
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'chorouk-db',
-#         'USER': 'root',
-#         'PASSWORD': '',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+<<<<<<< Updated upstream
         'NAME': 'heroku_03966fce2f9d218',
         'USER': 'bc3a5f084da40d',
         'PASSWORD': 'f97206b6',
+=======
+        'NAME': 'chorouk-db',
+        'USER': 'root',
+        'PASSWORD': '',
+>>>>>>> Stashed changes
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_567be33c13a68fe',
+#         'USER': 'b1ab5aeae8346f',
+#         'PASSWORD': '8e25e00a',
+#     }
+# }
 
 
 
@@ -174,9 +180,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 #Yasoo
 #Deploy
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
 #DEBUG = False
 
 
@@ -200,15 +206,15 @@ REST_FRAMEWORK = {
 
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hu5jnobc0',
-    'API_KEY': '667565971498513',
-    'API_SECRET': 'hcH9GKC14GLyzespACx51vwLHbc',
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'hu5jnobc0',
+#     'API_KEY': '667565971498513',
+#     'API_SECRET': 'hcH9GKC14GLyzespACx51vwLHbc',
+# }
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+# django_heroku.settings(locals())
+# del DATABASES['default']['OPTIONS']['sslmode']
 
 
