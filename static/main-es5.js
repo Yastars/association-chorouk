@@ -1455,18 +1455,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
     }
 
-    var _c3 = function _c3() {
-      return ["../news/1"];
-    };
-
-    var _c4 = function _c4() {
-      return ["../donation/1"];
-    };
-
-    var _c5 = function _c5() {
-      return ["../sport/1"];
-    };
-
     var BlogPageComponent =
     /*#__PURE__*/
     function () {
@@ -1545,7 +1533,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       type: BlogPageComponent,
       selectors: [["app-blog-page"]],
       decls: 95,
-      vars: 8,
+      vars: 5,
       consts: [[1, "banner_area"], [1, "banner_inner", "d-flex", "align-items-center"], ["data-stellar-ratio", "0.9", "data-stellar-vertical-offset", "0", "data-background", "", 1, "overlay", "bg-parallax"], [1, "container"], [1, "banner_content", "text-center"], [1, "blog_categorie_area"], [1, "row"], [1, "col-lg-4"], [1, "categories_post"], ["src", "assets/img/blog/cat-post/cat-post-3.jpg", "alt", "post"], [1, "categories_details", 3, "routerLink", "click"], [1, "categories_text"], [1, "border_line"], ["src", "assets/img/blog/cat-post/cat-post-2.jpg", "alt", "post"], [1, "categories_details"], [1, "categories_text", 3, "routerLink", "click"], ["src", "assets/img/blog/cat-post/cat-post-1.jpg", "alt", "post"], [1, "blog_area"], [1, "col-lg-8"], [1, "blog_left_sidebar"], [4, "ngIf"], ["class", "blog-pagination justify-content-center d-flex", 4, "ngIf"], [1, "blog_right_sidebar"], [1, "single_sidebar_widget", "search_widget"], [1, "input-group"], ["type", "text", "placeholder", "Search Posts", 1, "form-control"], [1, "input-group-btn"], ["type", "button", 1, "btn", "btn-default"], [1, "lnr", "lnr-magnifier"], [1, "br"], [1, "single_sidebar_widget", "author_widget"], ["src", "assets/img/blog/Ali_louz_120x120.jpg", "alt", "", 1, "author_img", "rounded-circle"], [1, "social_icon"], ["href", "#"], [1, "fa", "fa-facebook"], [1, "fa", "fa-twitter"], [1, "fa", "fa-github"], [1, "fa", "fa-behance"], [1, "single-sidebar-widget", "newsletter_widget"], [1, "widget_title"], [1, "form-group", "d-flex", "flex-row"], [1, "input-group-prepend"], [1, "input-group-text"], ["aria-hidden", "true", 1, "fa", "fa-envelope"], ["type", "text", "id", "inlineFormInputGroup", "placeholder", "Enter email", "onfocus", "this.placeholder = ''", "onblur", "this.placeholder = 'Enter email'", 1, "form-control"], ["href", "#", 1, "bbtns"], [1, "text-bottom"], [3, "post", 4, "ngFor", "ngForOf"], [3, "post"], [1, "blog-pagination", "justify-content-center", "d-flex"], [1, "pagination"], [1, "page-item", "pointer", 3, "ngClass", "routerLink", "click"], ["aria-label", "Previous", 1, "page-link"], ["aria-hidden", "true"], [1, "lnr", "lnr-chevron-left"], [4, "ngFor", "ngForOf"], ["aria-label", "Next", 1, "page-link"], [1, "lnr", "lnr-chevron-right"], ["class", "page-item", 3, "ngClass", 4, "ngIf"], [1, "page-item", 3, "ngClass"], [1, "page-link", 3, "routerLink", "click"]],
       template: function BlogPageComponent_Template(rf, ctx) {
         if (rf & 1) {
@@ -1873,15 +1861,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         if (rf & 2) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](5, _c3));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/blog/news/1");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](6, _c4));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/blog/donation/1");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](7, _c5));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/blog/sport/1");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
 
