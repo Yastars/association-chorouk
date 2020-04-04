@@ -22,6 +22,17 @@ class PostAPIView(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `category` query parameter in the URL.
+        """
+        queryset = Post.objects.all()
+        category = self.request.query_params.get('category', None)
+        if category is not None:
+            queryset = queryset.filter(category=category)
+        return queryset
+
 class GameAPIView(generics.ListCreateAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
