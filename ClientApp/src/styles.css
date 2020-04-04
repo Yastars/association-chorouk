@@ -46,7 +46,7 @@ Table of Content:
 /*----------------------------------------------------*/
 body {
   line-height: 25px;
-  font-size: 15px;
+  font-size: 18px; /* 15px */
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   color: #777777; }
@@ -154,7 +154,7 @@ button:focus {
   padding: 0px 50px;
   color: #fff;
   font-family: "Roboto", sans-serif;
-  font-size: 12px;
+  font-size: 18px; /* 12px yasoo*/
   font-weight: 500;
   line-height: 48px;
   border: 1px solid #60bc0f;
@@ -194,8 +194,8 @@ button:focus {
     .header_area .navbar .nav .nav-item {
       margin-right: 45px; }
       .header_area .navbar .nav .nav-item .nav-link {
-        font-size: 13px;
-        font-weight: 500;
+        font-size: 20px; /* 13px */
+        /* font-weight: 500; */
         line-height: 80px;
         text-transform: uppercase;
         color: #ffffff;

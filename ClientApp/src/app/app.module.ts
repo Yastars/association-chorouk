@@ -20,6 +20,9 @@ import { AboutPageComponent } from './Pages/about-page/about-page.component';
 import { BlogPageComponent } from './Pages/blog-page/blog-page.component';
 import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-page.component';
 
+// FontAwseome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-pa
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

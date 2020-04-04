@@ -5,8 +5,8 @@
         </div>
         <div class="container">
             <div class="banner_content text-center">
-                <h2>Our Blog</h2>
-                <p>Platea nullam nostra laoreet potenti hendrerit laoreet enim nisl</p>
+                <h2>مدونة</h2>
+                <p>جمعية الشروق الفوسفاطية للرياضة</p>
             </div>
         </div>
     </div>
@@ -20,13 +20,13 @@
             <div class="col-lg-4">
                 <div class="categories_post">
                     <img src="assets/img/blog/cat-post/cat-post-3.jpg" alt="post">
-                    <div class="categories_details">
+                    <div class="categories_details" (click)="onClick(1, 'news')" [routerLink]="['../news/1']" >
                         <div class="categories_text">
-                            <a href="single-blog.html">
-                                <h5>Social Life</h5>
+                            <a>
+                                <h5>أخبار</h5>
                             </a>
                             <div class="border_line"></div>
-                            <p>Enjoy your social life together</p>
+                            <p> أخبارالجمعية</p>
                         </div>
                     </div>
                 </div>
@@ -35,12 +35,12 @@
                 <div class="categories_post">
                     <img src="assets/img/blog/cat-post/cat-post-2.jpg" alt="post">
                     <div class="categories_details">
-                        <div class="categories_text">
-                            <a href="single-blog.html">
-                                <h5>Politics</h5>
+                        <div class="categories_text" (click)="onClick(1, 'donation')" [routerLink]="['../donation/1']">
+                            <a>
+                                <h5>تبرعات</h5>
                             </a>
                             <div class="border_line"></div>
-                            <p>Be a part of politics</p>
+                            <p> تبرعات الجمعية </p>
                         </div>
                     </div>
                 </div>
@@ -48,13 +48,13 @@
             <div class="col-lg-4">
                 <div class="categories_post">
                     <img src="assets/img/blog/cat-post/cat-post-1.jpg" alt="post">
-                    <div class="categories_details">
+                    <div class="categories_details" (click)="onClick(1, 'sport')" [routerLink]="['../sport/1']">
                         <div class="categories_text">
-                            <a href="single-blog.html">
-                                <h5>Food</h5>
+                            <a>
+                                <h5>رياضة</h5>
                             </a>
                             <div class="border_line"></div>
-                            <p>Let the food be finished</p>
+                            <p>رياضة الجمعية</p>
                         </div>
                     </div>
                 </div>
@@ -109,21 +109,19 @@
                         <div class="br"></div>
                     </aside>
                     <aside class="single_sidebar_widget author_widget">
-                        <img class="author_img rounded-circle" src="assets/img/blog/author.png" alt="">
-                        <h4>Charlie Barber</h4>
-                        <p>Senior blog writer</p>
+                        <img class="author_img rounded-circle" src="assets/img/blog/Ali_louz_120x120.jpg" alt="">
+                        <h4>علي كراس</h4>
+                        <p>رئيس الجمعية</p>
                         <div class="social_icon">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-github"></i></a>
                             <a href="#"><i class="fa fa-behance"></i></a>
                         </div>
-                        <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you
-                            should have to spend money on boot camp when you can get. Boot camps have itssuppor ters
-                            andits detractors.</p>
+                        <p>Ali Garras</p>
                         <div class="br"></div>
                     </aside>
-                    <aside class="single_sidebar_widget popular_post_widget">
+                    <!-- <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Popular Posts</h3>
                         <div class="media post_item">
                             <img src="assets/img/blog/popular-post/post1.jpg" alt="post">
@@ -162,8 +160,8 @@
                             </div>
                         </div>
                         <div class="br"></div>
-                    </aside>
-                    <aside class="single_sidebar_widget ads_widget">
+                    </aside> -->
+                    <!-- <aside class="single_sidebar_widget ads_widget">
                         <a href="#"><img class="img-fluid" src="assets/img/blog/add.jpg" alt=""></a>
                         <div class="br"></div>
                     </aside>
@@ -214,12 +212,11 @@
                             </li>
                         </ul>
                         <div class="br"></div>
-                    </aside>
+                    </aside> -->
                     <aside class="single-sidebar-widget newsletter_widget">
-                        <h4 class="widget_title">Newsletter</h4>
+                        <h4 class="widget_title">تابعونا</h4>
                         <p>
-                            Here, I focus on a range of items and features that we use in life without
-                            giving them a second thought.
+                            أدخل بريدك الإلكتروني الخاص
                         </p>
                         <div class="form-group d-flex flex-row">
                             <div class="input-group">
@@ -231,12 +228,12 @@
                                     placeholder="Enter email" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Enter email'">
                             </div>
-                            <a href="#" class="bbtns">Subcribe</a>
+                            <a href="#" class="bbtns">تابعونا</a>
                         </div>
-                        <p class="text-bottom">You can unsubscribe at any time</p>
+                        <p class="text-bottom">أدخل بريدك الإلكتروني الخاص</p>
                         <div class="br"></div>
                     </aside>
-                    <aside class="single-sidebar-widget tag_cloud_widget">
+                    <!-- <aside class="single-sidebar-widget tag_cloud_widget">
                         <h4 class="widget_title">Tag Clouds</h4>
                         <ul class="list">
                             <li><a href="#">Technology</a></li>
@@ -252,7 +249,7 @@
                             <li><a href="#">Lifestyle</a></li>
                             <li><a href="#">Adventure</a></li>
                         </ul>
-                    </aside>
+                    </aside> -->
                 </div>
             </div>
         </div>

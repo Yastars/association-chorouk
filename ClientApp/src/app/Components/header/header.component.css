@@ -20,3 +20,15 @@
   padding: 0px;
   display: inline-block;
 }
+
+.faBars{
+  color: white;
+}
+
+@media (max-width: 991px) {
+  .logo_h img{
+  height: 40px;
+  width: 42px;
+  object-position: -8px;
+  }
+}

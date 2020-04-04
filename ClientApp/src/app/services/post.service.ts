@@ -36,10 +36,14 @@ export class PostService {
     this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   }
 
-  getAllPosts(nbPage: number): Observable<HttpResponse<PostPageModel>> {
+  getAllPosts(nbPage: number, category?: string): Observable<HttpResponse<PostPageModel>> {
+
+    const requestPath = (category) ? this.baseUrl + `/posts/?format=json&category=${category}&page=${nbPage}` 
+    : this.baseUrl + `/posts/?format=json&page=${nbPage}`;
+
     return this.http.get<PostPageModel>(
       // Edit this shit
-      this.baseUrl + '/posts/?format=json&page=' + nbPage,
+      requestPath,
       {
         observe: 'response',
         headers: this.headers

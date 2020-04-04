@@ -2,12 +2,12 @@
     <div class="col-md-3">
         <div class="blog_info text-right">
             <div class="post_tag">
-                <a href="#">Association,</a>
-                <a class="active" href="#">{{ post.category }}</a>
+                <a>موضوع: </a>
+                <a class="active" [routerLink] = "'/blog/' + post.category + '/1'">{{ this.category }}</a>
             </div>
             <ul class="blog_meta list">
-                <li><a href="#">{{ post.publishedByUsername }}<i class="lnr lnr-user"></i></a></li>
-                <li><a href="#">{{ post.createdAt }}<i class="lnr lnr-calendar-full"></i></a></li>
+                <li><a>{{ post.publishedByUsername }}<i class="lnr lnr-user"></i></a></li>
+                <li><a>{{ post.createdAt }}<i class="lnr lnr-calendar-full"></i></a></li>
             </ul>
         </div>
     </div>
@@ -19,7 +19,7 @@
                     <h2>{{ post.title }}</h2>
                 </a>
                 <p>{{ post.preview }}</p>
-                <a [routerLink]="['../post', post.id]" class="blog_btn pointer">View More</a>
+                <a [routerLink]="['../post', post.id]" class="blog_btn pointer">إقرأ المزيد</a>
             </div>
         </div>
     </div>
