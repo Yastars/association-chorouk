@@ -377,7 +377,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const _c0 = function (a1) { return ["../post", a1]; };
+const _c0 = function (a1) { return ["../../post", a1]; };
 class SinglePostComponent {
     constructor() {
     }

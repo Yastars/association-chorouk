@@ -788,7 +788,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
     var _c0 = function _c0(a1) {
-      return ["../post", a1];
+      return ["../../post", a1];
     };
 
     var SinglePostComponent =
