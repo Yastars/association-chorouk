@@ -787,10 +787,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
-    var _c0 = function _c0(a1) {
-      return ["../../post", a1];
-    };
-
     var SinglePostComponent =
     /*#__PURE__*/
     function () {
@@ -844,7 +840,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         post: "post"
       },
       decls: 28,
-      vars: 10,
+      vars: 8,
       consts: [[1, "row", "blog_item"], [1, "col-md-3"], [1, "blog_info", "text-right"], [1, "post_tag"], [1, "active", 3, "routerLink"], [1, "blog_meta", "list"], [1, "lnr", "lnr-user"], [1, "lnr", "lnr-calendar-full"], [1, "col-md-9"], [1, "blog_post"], ["height", "360px", "width", "560px", "alt", "", 3, "src"], [1, "blog_details"], [1, "blog_btn", "pointer", 3, "routerLink"]],
       template: function SinglePostComponent_Template(rf, ctx) {
         if (rf & 1) {
@@ -972,7 +968,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](8, _c0, ctx.post.id));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/blog/post/" + ctx.post.id);
         }
       },
       directives: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkWithHref"]],

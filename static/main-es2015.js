@@ -377,7 +377,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const _c0 = function (a1) { return ["../../post", a1]; };
 class SinglePostComponent {
     constructor() {
     }
@@ -407,7 +406,7 @@ class SinglePostComponent {
     }
 }
 SinglePostComponent.ɵfac = function SinglePostComponent_Factory(t) { return new (t || SinglePostComponent)(); };
-SinglePostComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SinglePostComponent, selectors: [["app-single-post"]], inputs: { post: "post" }, decls: 28, vars: 10, consts: [[1, "row", "blog_item"], [1, "col-md-3"], [1, "blog_info", "text-right"], [1, "post_tag"], [1, "active", 3, "routerLink"], [1, "blog_meta", "list"], [1, "lnr", "lnr-user"], [1, "lnr", "lnr-calendar-full"], [1, "col-md-9"], [1, "blog_post"], ["height", "360px", "width", "560px", "alt", "", 3, "src"], [1, "blog_details"], [1, "blog_btn", "pointer", 3, "routerLink"]], template: function SinglePostComponent_Template(rf, ctx) { if (rf & 1) {
+SinglePostComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SinglePostComponent, selectors: [["app-single-post"]], inputs: { post: "post" }, decls: 28, vars: 8, consts: [[1, "row", "blog_item"], [1, "col-md-3"], [1, "blog_info", "text-right"], [1, "post_tag"], [1, "active", 3, "routerLink"], [1, "blog_meta", "list"], [1, "lnr", "lnr-user"], [1, "lnr", "lnr-calendar-full"], [1, "col-md-9"], [1, "blog_post"], ["height", "360px", "width", "560px", "alt", "", 3, "src"], [1, "blog_details"], [1, "blog_btn", "pointer", 3, "routerLink"]], template: function SinglePostComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "article", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -470,7 +469,7 @@ SinglePostComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.post.preview);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](8, _c0, ctx.post.id));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/blog/post/" + ctx.post.id);
     } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkWithHref"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL0NvbXBvbmVudHMvc2luZ2xlLXBvc3Qvc2luZ2xlLXBvc3QuY29tcG9uZW50LmNzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SinglePostComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
