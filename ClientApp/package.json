@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "cd ClientApp node server.js",
     "build": "ng build",
+    "build:django": "ng build ",
+    "build:django-prod": "ng build --output-path ../association --output-hashing none ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

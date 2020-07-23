@@ -400,11 +400,11 @@
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Users\yassi\Documents\Yassine Qassar\Devlab\association-chorouk\ClientApp\node_modules\bootstrap\dist\css\bootstrap.min.css */
+    /*! C:\Users\Yasoo\Documents\Yassine Qassar\Devlab\Chorouk\association-chorouk\ClientApp\node_modules\bootstrap\dist\css\bootstrap.min.css */
     "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
     module.exports = __webpack_require__(
-    /*! C:\Users\yassi\Documents\Yassine Qassar\Devlab\association-chorouk\ClientApp\src\styles.css */
+    /*! C:\Users\Yasoo\Documents\Yassine Qassar\Devlab\Chorouk\association-chorouk\ClientApp\src\styles.css */
     "./src/styles.css");
     /***/
   }

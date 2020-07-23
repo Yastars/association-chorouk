@@ -3884,7 +3884,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\yassi\Documents\Yassine Qassar\Devlab\association-chorouk\ClientApp\src\main.ts */
+    /*! C:\Users\Yasoo\Documents\Yassine Qassar\Devlab\Chorouk\association-chorouk\ClientApp\src\main.ts */
     "./src/main.ts");
     /***/
   }

@@ -31,7 +31,7 @@ urlpatterns = [
     path(r'gameRegistrations/', views.GameRegistrationAPIView.as_view(), name='game-registrations-list'),
     path('upload/', include('crmapp.urls')),
     path('posts/<pk>', views.getOnePost, ),
-    re_path(r'^static/(?P<path>.*)$', views.index),
+    re_path(r'^association/(?P<path>.*)$', views.index),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
