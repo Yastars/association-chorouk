@@ -16,10 +16,13 @@
 
 #run project
 1) django-admin runserver --settings=WWWchorouk.localsettings.py //  either this or (2)
-or) set DJANGO_SETTINGS_MODULE=WWWchorouk.localsettings            // (2)
+or) set DJANGO_SETTINGS_MODULE=WWWchorouk.localsettings
 
 1) pipenv shell 
 or use) pipenv run [commands below]
 2) python manage.py migrate
 3) python run manage.py runserver
 4) create super user: python manage.py createsuperuser --username=joe --email=joe@example.com
+
+
+#after changes on clientside use ng build

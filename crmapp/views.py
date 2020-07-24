@@ -8,6 +8,8 @@ from rest_framework.parsers import FileUploadParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from rest_framework.permissions import IsAuthenticated  # <-- Here
+
 # Create your views here.
 
 def index(request, path=''):
@@ -16,9 +18,10 @@ def index(request, path=''):
 
 class AccountAPIView(generics.ListCreateAPIView):
     queryset = Account.objects.all()
-    serializer_class = AccountSerializer
+    serializer_class = AccountSerializer # Connected only
 
 class PostAPIView(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 

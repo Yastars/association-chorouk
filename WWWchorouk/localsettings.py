@@ -181,6 +181,9 @@ DEBUG = True
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'crmapp.pagination.HeaderPagination',
     # 'PAGE_SIZE': 5
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 6,
     'DATETIME_FORMAT': "%Y-%m-%d",

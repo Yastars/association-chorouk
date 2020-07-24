@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 
 /* By Yasoo */
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';    // add this
+
+
 import { LoginComponent } from './Components/login/login.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { GameListComponent } from './Components/game-list/game-list.component';
@@ -22,6 +25,7 @@ import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-pa
 
 // FontAwseome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -44,9 +48,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

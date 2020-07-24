@@ -19,6 +19,7 @@ from crmapp import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
+from rest_framework.authtoken.views import obtain_auth_token
 
 
 
@@ -31,6 +32,7 @@ urlpatterns = [
     path(r'gameRegistrations/', views.GameRegistrationAPIView.as_view(), name='game-registrations-list'),
     path('upload/', include('crmapp.urls')),
     path('posts/<pk>', views.getOnePost, ),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     re_path(r'^association/(?P<path>.*)$', views.index),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
