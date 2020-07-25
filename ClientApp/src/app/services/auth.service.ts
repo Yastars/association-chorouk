@@ -8,6 +8,7 @@ import { User } from '../Entities/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const JWT_EXP = 5;
+const TIME_REFRESH_JWT = 4 * 1000;
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -64,9 +65,9 @@ export class AuthService {
         // for my case I don't use the encoded64, so I need to change this code
         // const jwtToken = JSON.parse(atob(this.userValue.jwtToken.split('.')[1]));
 
-        const expires = new Date(JWT_EXP * 10);
+        // const expires = new Date(JWT_EXP * 10);
         // const timeout = expires.getTime() - Date.now() - (60 * 1000);
-        const timeout = (5 * 1000);
+        const timeout = (TIME_REFRESH_JWT);
         this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
     }
 
