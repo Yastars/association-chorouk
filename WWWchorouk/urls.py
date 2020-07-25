@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
 
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView,TokenVerifyView)
+
 
 
 urlpatterns = [
@@ -33,6 +35,13 @@ urlpatterns = [
     path('upload/', include('crmapp.urls')),
     path('posts/<pk>', views.getOnePost, ),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    
+    # Json Web Token
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # JWT
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), # JWT
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),    # HMAC , Hash- based message authentification code
+    
+    # Re-path rest to this location
     re_path(r'^association/(?P<path>.*)$', views.index),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

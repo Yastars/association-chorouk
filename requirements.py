@@ -24,3 +24,4 @@ wrapt==1.11.2
 cloudinary==1.20.0
 django-cloudinary-storage==0.2.3
 django-spa
+djangorestframework-simplejwt
