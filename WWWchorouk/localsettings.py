@@ -182,7 +182,8 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'crmapp.pagination.HeaderPagination',
     # 'PAGE_SIZE': 5
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 6,
@@ -191,8 +192,13 @@ REST_FRAMEWORK = {
     'DATETIME_INPUT_FORMATS': "%Y-%m-%d",
     'DATE_INPUT_FORMATS': "%Y-%m-%d",
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  # Authentification
+        'rest_framework.authentication.TokenAuthentication',  # Token Authentification
+        'rest_framework_simplejwt.authentication.JWTAuthentication' # Json Web Token
     ],
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        # 'rest_framework.parsers.FormParser',
+    )
 }
 
 # Start Test Deploy
