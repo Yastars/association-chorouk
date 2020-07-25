@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 import { User } from '../Entities/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+const JWT_EXP = 5;
+
 @Injectable({providedIn: 'root'})
 export class AuthService {
     private userSubject: BehaviorSubject<User>;
@@ -29,7 +31,7 @@ export class AuthService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${this.environment.apiUrl}/users/authenticate`, {username, password}, { withCredentials: true}).pipe(map(user => {
+        return this.http.post<any>(`${this.environment.apiUrl}/api/token/`, {username, password}).pipe(map(user => {
             this.userSubject.next(user);
             this.startRefreshTokenTimer();
             return user;
@@ -44,11 +46,12 @@ export class AuthService {
     }
 
     refreshToken() {
-        return this.http.post<any>(`${this.environment.apiUrl}/users/refresh-token`, {}, { withCredentials: true })
-            .pipe(map((user) => {
-                this.userSubject.next(user);
+        return this.http.post<any>(`${this.environment.apiUrl}/api/token/refresh/`, {refresh: this.userValue.refresh})
+            .pipe(map((newAcces) => {
+                this.userValue.access = newAcces;
+                this.userSubject.next(this.userValue);
                 this.startRefreshTokenTimer();
-                return user;
+                return this.userValue;
             }));
     }
 
@@ -59,10 +62,11 @@ export class AuthService {
     private startRefreshTokenTimer() {
         // parse json object from base64 encoded jwt token
         // for my case I don't use the encoded64, so I need to change this code
-        const jwtToken = JSON.parse(atob(this.userValue.jwtToken.split('.')[1]));
+        // const jwtToken = JSON.parse(atob(this.userValue.jwtToken.split('.')[1]));
 
-        const expires = new Date(jwtToken.exp * 1000);
-        const timeout = expires.getTime() - Date.now() - (60 * 1000);
+        const expires = new Date(JWT_EXP * 10);
+        // const timeout = expires.getTime() - Date.now() - (60 * 1000);
+        const timeout = (5 * 1000);
         this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
     }
 

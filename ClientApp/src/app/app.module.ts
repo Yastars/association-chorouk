@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
 /* By Yasoo */
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';    // add this
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add this
 
 
 import { LoginComponent } from './Components/login/login.component';
@@ -26,6 +26,10 @@ import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-pa
 // FontAwseome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from './services/auth.service';
+
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { appInitializer } from './_helpers/app.initializer';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
 
 
 @NgModule({
@@ -47,11 +51,16 @@ import { AuthService } from './services/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [AuthService],
+  providers: [
+    { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthService] },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
