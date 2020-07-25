@@ -25,7 +25,7 @@ import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-pa
 
 // FontAwseome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -51,7 +51,7 @@ import { UserService } from './services/user.service';
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [UserService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
