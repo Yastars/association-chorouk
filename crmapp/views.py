@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from rest_framework import generics
 from .models import Account, Post, Game, GameRegistration
-from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer, PostBaseSerializer
+from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer, PostBaseSerializer, UserSerializer
 
 from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
 from rest_framework.permissions import IsAuthenticated  # <-- Here
+
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # Create your views here.
 
@@ -64,3 +66,33 @@ def getOnePost(request, pk):
     instance = Post.objects.get(pk=pk)
     serializer = PostBaseSerializer(instance)
     return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def current_user(request):
+    # authentification = JWTAuthentication.authenticate(*args, **kwargs)
+    # print(authentification)
+    # user = JWTAuthentication.get_user(authentification[1])
+    # serializer = UserSerializer(user)
+    # return Response(serializer.data)
+    try:
+        account = Account.objects.get(user=request.user)
+        return Response({
+            "username": request.user.username,
+            "is_staff": request.user.is_staff,
+            "is_active": request.user.is_active,
+            "is_superuser": request.user.is_superuser,
+            "last_login": request.user.last_login,
+
+            "first_name": account.first_name,
+            "last_name": account.last_name,
+            "gender": account.gender,
+            "email": account.email,
+            "phone": account.phone,
+            "address": account.address,
+            "city": account.city,
+            "position": account.position,
+            "description": account.description,
+        })
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)

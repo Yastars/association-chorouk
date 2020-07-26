@@ -38,6 +38,7 @@ urlpatterns = [
     
     # Json Web Token
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # JWT Token obtain
+    path('api/current/', views.current_user, ),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), # JWT Token refresh
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),    # HMAC , Hash- based message authentification code
     
