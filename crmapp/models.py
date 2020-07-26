@@ -41,10 +41,9 @@ class Account(models.Model):
     city = models.CharField("City", max_length=64)
     position = models.CharField("Position at the Association", max_length=255, choices=INDCHOICES, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    createdBy = models.ForeignKey(User, related_name='account_created_by', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     createdAt = models.DateTimeField("Created Att", auto_now_add=True)
     isActive = models.BooleanField(default=False)
-    activatedBy = models.ForeignKey(User, related_name='account_activated_by', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.first_name

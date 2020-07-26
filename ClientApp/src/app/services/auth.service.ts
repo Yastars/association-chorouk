@@ -8,7 +8,7 @@ import { User } from '../Entities/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const JWT_EXP = 5;
-const TIME_REFRESH_JWT = 4 * 1000;
+const TIME_REFRESH_JWT = 4 * 10000;
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -33,6 +33,7 @@ export class AuthService {
 
     login(username: string, password: string) {
         return this.http.post<any>(`${this.environment.apiUrl}/api/token/`, {username, password}).pipe(map(user => {
+            user.username = username;
             this.userSubject.next(user);
             this.startRefreshTokenTimer();
             return user;
@@ -66,9 +67,14 @@ export class AuthService {
         // const jwtToken = JSON.parse(atob(this.userValue.jwtToken.split('.')[1]));
 
         // const expires = new Date(JWT_EXP * 10);
+        const expires = Date.now();
+        
         // const timeout = expires.getTime() - Date.now() - (60 * 1000);
         const timeout = (TIME_REFRESH_JWT);
-        this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
+        
+        const fourMinsLater = new Date();
+        fourMinsLater.setMinutes(fourMinsLater.getMinutes() + 4);
+        this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), fourMinsLater.getTime() - Date.now());
     }
 
     private stopRefreshTokenTimer() {
