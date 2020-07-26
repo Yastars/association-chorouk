@@ -37,14 +37,13 @@ class Account(models.Model):
     gender = models.CharField("Gender", choices=GENDERCHOICES, max_length=1)
     email = models.EmailField(blank = False, null = False, unique=True)
     phone = models.CharField(max_length=20, blank = True, null = True, unique=True)
-    address = models.CharField("Address", "Name", max_length=250)
+    address = models.CharField("Address", max_length=250)
     city = models.CharField("City", max_length=64)
     position = models.CharField("Position at the Association", max_length=255, choices=INDCHOICES, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    createdAt = models.DateTimeField("Created Att", auto_now_add=True)
-    isActive = models.BooleanField(default=False)
-
+    
+ 
     def __str__(self):
         return self.first_name
 

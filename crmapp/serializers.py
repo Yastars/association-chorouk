@@ -40,5 +40,9 @@ class PostBaseSerializer(serializers.BaseSerializer):
             'createdAt':instance.createdAt.strftime("%b %d %Y")
         }
 
-    
+class UserSerializer(serializers.ModelSerializer):
+    # snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all())
+    class Meta:
+        model = User
+        fields = "__all__"
 
