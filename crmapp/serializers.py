@@ -10,6 +10,14 @@ class AccountSerializer(serializers.ModelSerializer):
         def create(self, validated_data):
             return Account.objects.create(**validated_data)
 
+        def update(self, instance, validated_data):
+            instance.phone = validated_data.get('phone', instance.phone)
+            instance.address = validated_data.get('address', instance.address)
+            instance.city = validated_data.get('city', instance.city)
+            instance.description = validated_data.get('description', instance.description)
+            instance.save()
+            return instance
+
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -52,3 +60,12 @@ class UserSerializer(serializers.ModelSerializer):
         # extra_kwargs = {'password': {'write_only': True}}
 
 
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)

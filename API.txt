@@ -1,3 +1,5 @@
+/* TOKEN ---------------------------------------------------
+---------------------------------------------------
 - Get New token : http://localhost:8000/api/token/
 Body: 
 {
@@ -42,4 +44,22 @@ Body:
         "position": "MEMBER", 
         "description": "NO DESCRIPTION"
     }
+}
+
+
+- Update Password : old_password new_password
+PUT: http://localhost:8000/api/update_user/
+Header: Authorization  = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2Mjg3NjM3LCJqdGkiOiI0ZWUyNDc3YjJhNDE0MTc3ODgzNGJmOGVmZDFhZjkwOSIsInVzZXJfaWQiOjUxfQ.zDUK5SQZ5ekIikWcoGP3a-b5hPvOU0-lwWqN0QnEDkw
+
+body:
+{
+    "old_password": "go",
+    "new_password": "gogo"
+}
+Response
+{
+    "status": "success",
+    "code": 200,
+    "message": "Password updated successfully",
+    "data": []
 }

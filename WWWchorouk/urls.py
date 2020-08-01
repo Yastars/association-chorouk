@@ -41,6 +41,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # JWT Token obtain
     path('api/current/', views.current_user, ),
     
+    path(r'api/update_user/', views.ChangePasswordView.as_view(), name='update-user'),
     # trying regits
     path('api/register_user/', views.register_user, ),
     # path('api/register_user/', views.RegisterUserAPIView.as_view(), ),
