@@ -121,29 +121,15 @@ def register_user(request):
     accountSerializer = AccountSerializer(data=request.data['account'])
     accountSerializer.is_valid(raise_exception=True)
     account = accountSerializer.validated_data
-    # user_id = serializerdata.validated_data.get('user_id')
     
     # # # Create User
     user_json = request.data['user']
     user = User.objects.create_user(user_json['username'], user_json['email'], password=user_json['password'], account=Account(account))
     userSerializer = UserSerializer(user)
 
-    # # # Create Account after Creating User
-    # account.id = None
-    # account['is_Accepted'] = False
-    # account['user'] = user
+    # Create Account
     accountSerializer.is_valid(raise_exception=True)
-    accountSerializer.save(is_Accepted=False, user=user)
-    # print('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO=')
-    # print(account)
-    # # accountSerializer = AccountSerializer(data=account)
-    # # accountSerializer.is_valid()
-    # accountSerializer = AccountSerializer(Account(account))
-    # # accountSerializer.save()
-    
-    # serializer = AccountSerializer(accountSerializer.validated_data)
-    # accountReturn = accountSerializer.data
-    
+    accountSerializer.save(is_Accepted=False, user=user) 
     
     return Response({
         'user':userSerializer.data,
@@ -155,33 +141,3 @@ def register_user(request):
 
 
 
-
-
-
-
-# @api_view(['POST'])
-# @permission_classes([AllowAny])
-# def register_user(request):
-#     # Deserialize Account
-#     accountSerializer = AccountSerializer(data=request.data['account'])
-#     accountSerializer.is_valid()
-#     account = Account(accountSerializer.validated_data)
-    
-#     # # Create User
-#     user_json = request.data['user']
-#     user = User.objects.create_user(user_json['username'], user_json['email'], password=user_json['password'], account=account)
-#     userSerializer = UserSerializer(user)
-
-#     # # Create Account after Creating User
-#     account.id = None
-#     account.user = user
-#     print('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO=')
-#     print(account)
-#     # accountSerializer = AccountSerializer(data=account)
-#     # accountSerializer.is_valid()
-#     accountSerializer = AccountSerializer(Account(account))
-#     # accountSerializer.save()
-
-#     return Response({
-#         # 'user':userSerializer.data,
-#         'account': accountSerializer.data})
