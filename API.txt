@@ -1,0 +1,45 @@
+- Get New token : http://localhost:8000/api/token/
+Body: 
+{
+    "username": "yasoo1230",
+    "password": "yasoo1230"
+}
+
+- Refresh Token : http://localhost:8000/api/token/refresh/
+Body:
+{
+		"refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU5NTgwMDcyOCwianRpIjoiMzliNTE3YTkzMDUwNDcyYzljODUyNjQ0NjExNTg4MWMiLCJ1c2VyX2lkIjoxfQ.XZQUYK6bKSH8NGYRhempIgaCtRTmalGXxrH61JXfseM"
+}
+
+- Get Current User : http://localhost:8000/api/current/
+Header: Authorization = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2MTk5OTAwLCJqdGkiOiI0ZTRjM2FjM2U4NDc0MjhlYTQ3MzhhZTQxYWFmMDY4YyIsInVzZXJfaWQiOjF9.dYjYdO1hk3WSZt4yfV-MICwqtslldHC337xd94Z2wg4
+
+Response : 
+{
+    "username": "admin",
+    "password": "pbkdf2_sha256$180000$spxrNuIX0S2v$WXYFAXiG67AwdIhau+RhmEzJ/SB9jBZtzOLt+fO7EIs=",
+    "account": 2
+}
+
+
+- Register New User : http://localhost:8000/api/register_user/
+
+Body:
+{
+    "user": {
+        "username": "wa2hy342a",
+        "password": "testerino122",
+        "email":"email@lol2ol.lol"
+    },
+    "account": {
+        "cin": "1222222",
+        "first_name": "Testo",
+        "last_name": "Testa",
+        "gender": "F",
+        "phone": "06234306",
+        "address": "Hungary",
+        "city": "Budapest",
+        "position": "MEMBER", 
+        "description": "NO DESCRIPTION"
+    }
+}

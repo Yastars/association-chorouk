@@ -6,7 +6,11 @@ from django.contrib.auth.models import User
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = "__all__"
+        fields = ["cin", "first_name", "last_name", "gender", "phone", "address", "city", "position", "description"]
+        def create(self, validated_data):
+            return Account.objects.create(**validated_data)
+
+
 
 class PostSerializer(serializers.ModelSerializer):
     publishedByUsername = serializers.CharField(source='publishedBy.username', read_only=True)
@@ -41,8 +45,10 @@ class PostBaseSerializer(serializers.BaseSerializer):
         }
 
 class UserSerializer(serializers.ModelSerializer):
-    # snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all())
     class Meta:
         model = User
-        fields = "__all__"
+        fields = ('username', 'email', 'is_active')
+        # fields = "__all__"
+        # extra_kwargs = {'password': {'write_only': True}}
+
 

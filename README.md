@@ -26,3 +26,10 @@ or use) pipenv run [commands below]
 
 
 #after changes on clientside use ng build
+
+
+# CHANGELOG
+- Updates to remember :
+- TOKEN Managemenet Front-Backend                                                                   100%
+- Get Current User                                                                                  100% Done Backend
+- http://localhost:8000/api/register_user/                                                          WORKING ON IT

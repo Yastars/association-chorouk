@@ -22,6 +22,7 @@ from django.views.generic.base import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
 
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView,TokenVerifyView)
+from django.contrib.auth.models import User
 
 
 
@@ -39,6 +40,12 @@ urlpatterns = [
     # Json Web Token
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # JWT Token obtain
     path('api/current/', views.current_user, ),
+    
+    # trying regits
+    path('api/register_user/', views.register_user, ),
+    # path('api/register_user/', views.RegisterUserAPIView.as_view(), ),
+    # path('api/register_user/', User.objects.create_user, ),
+
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), # JWT Token refresh
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),    # HMAC , Hash- based message authentification code
     
