@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 
 from rest_framework.parsers import JSONParser
 import io
+from rest_framework.serializers import ValidationError
 
 # Create your views here.
 
@@ -51,9 +52,6 @@ class GameAPIView(generics.ListCreateAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
-class GameRegistrationAPIView(generics.ListCreateAPIView):
-    queryset = GameRegistration.objects.all()
-    serializer_class = GameRegistrationSerializer
 
 
 class FileUploadView(APIView):
@@ -122,7 +120,6 @@ def current_user(request):
 @permission_classes([AllowAny])
 def register_user(request):
     # Deserialize Account
-    print(request.data['account'])
     accountSerializer = AccountSerializer(data=request.data['account'])
     accountSerializer.is_valid(raise_exception=True)
     account = accountSerializer.validated_data
@@ -168,7 +165,7 @@ class ChangePasswordView(generics.UpdateAPIView):
                 response = {
                     'status': 'success',
                     'code': status.HTTP_200_OK,
-                    'message': 'Password updated successfully',
+                    'message': 'Password updated successfully', 
                     'data': []
                 }
 
@@ -177,3 +174,67 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class GameRegistrationAPIView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated] #Needed
+    queryset = GameRegistration.objects.all()
+    serializer_class = GameRegistrationSerializer
+
+    # Return The Game Registrations For Current User Working
+    def get_queryset(self):
+        player = self.request.user
+        return GameRegistration.objects.all().filter(player=player)
+
+        # def get_object(self, queryset=None):
+        #     obj = self.request.user
+        #     return obj
+
+        # def update(self, request, *args, **kwargs):
+        #     self.object = self.get_object()
+
+    # def get_object(self, queryset=None):
+    #     obj = self.request.user
+    #     return obj
+
+    # def perform_create(self, request, *args, **kwargs):
+    #     serializer = self.get_serializer(data=request.data)
+    #     if serializer.is_valid():
+    #         # game = Game.objects.filter(id=(serializer.data.get("game")['game']))
+    #         # count_game_registered = GameRegistration.objects.filter(game=game, status='REGISTERED').count()
+
+    #         # if count_game_registered < game.max_players:
+    #         #     raise ValidationError('GameRegistration.create.Error: Max_players')
+    #         # serializer.save(player=self.request.user)
+    #         return serializer.data['game']['game']
+
+
+     
+
+    def perform_create(self, serializer):
+        # GR = GameRegistration
+        GRserializer = GameRegistrationSerializer(data=serializer.data)
+        GRserializer.is_valid(raise_exception=True)
+        GR_validated = GRserializer.validated_data
+
+        newGR = GameRegistration(
+            position= GR_validated['position'],
+            game= GR_validated['game'],
+            # player = GR_validated['player'],
+            player = None,
+            status = GR_validated['status'])
+
+        count_game_registered = GameRegistration.objects.filter(game=newGR.game, status="REGISTERED").count()
+        if GameRegistration.objects.filter(game=newGR.game, player = self.request.user).exists():
+            raise ValidationError('Current User {} Already Registered in this game : {}'.format(self.request.user.username, newGR.game.title) )
+        if count_game_registered > newGR.game.max_players:
+            raise ValidationError('GameRegistration.create.Error: Max_players')    
+        newGR.player = self.request.user
+        newGR.save()
+    #     # return type(self)
+        print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOoo=", count_game_registered)
+
+
+
+        # count_game_registered = GameRegistration.objects.filter(game=game, status=REGISTERED)
+        # if count_game_registered < game.max_players:
+        #     raise ValidationError('GameRegistration.create.Error: Max_players')
+        # serializer.save(player=self.request.user)

@@ -65,6 +65,11 @@ Response
 }
 
 
+- Manage Games from Admin DONE!
+- Get All Games
+- Get The Games where a user registered
+
+
 
 
 
@@ -81,15 +86,14 @@ https://github.com/viewflow/django-fsm
 
 
 -- Next:
-- Create a game as an Admin
-- Register current user in a game
-- Get All Games
-- Get Current Game (Show if the user is participating or not)
-- Get Users Games
+- add Team A, Team B for game registrations
+- if full register to awaiting list
 
 - History games, score, 
 
 - Tournament, Teams
+
+- Staff, with pictures : https://github.com/cloudinary/pycloudinary
 
 
 
