@@ -4,13 +4,13 @@ from rest_framework import status
 from .models import Account, Post, Game, GameRegistration
 # from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer, PostBaseSerializer
 from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer, PostBaseSerializer, UserSerializer, ChangePasswordSerializer
-
+from .permissions import *
 from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.contrib.auth.models import User
 
@@ -23,12 +23,15 @@ def index(request, path=''):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html')
 
+# We need Generic ListCreateAPIVIEW in order to automaticcaly manage the permissions and requests
 class AccountAPIView(generics.ListCreateAPIView):
+    # http_method_names = ['GET', 'HEAD', 'OPTIONS']
+    permission_classes = [IsAdminUser]
     queryset = Account.objects.all()
     serializer_class = AccountSerializer # Connected only
 
 class PostAPIView(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [IsAdminUser | ReadOnly]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -44,6 +47,7 @@ class PostAPIView(generics.ListCreateAPIView):
         return queryset
 
 class GameAPIView(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUser | ReadOnly]
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
@@ -138,18 +142,6 @@ def register_user(request):
     
 
 
-
-
-
-
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def update_user(request):
-#     # try:
-#     account = Account.objects.get(user=request.user)
-#     user = request.user
-
-
 class ChangePasswordView(generics.UpdateAPIView):
         """
         An endpoint for changing password.
@@ -183,3 +175,5 @@ class ChangePasswordView(generics.UpdateAPIView):
                 return Response(response)
 
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+

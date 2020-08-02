@@ -5,6 +5,9 @@ from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from rest_framework import serializers
+import datetime
+
 INDCHOICES = (
     ('PRESIDENT', 'PRESIDENT'),
     ('ADMINISTRATION', 'ADMINISTRATION'),
@@ -87,8 +90,10 @@ class Game(models.Model):
     title = models.CharField('Title', max_length=255, null=False, blank=False)
     preview = models.TextField(max_length=600, verbose_name='Preview')
     content = models.TextField(max_length=2000, verbose_name='Detail Text')
-    address = models.CharField("Address", "Name", max_length=250)
+    address = models.CharField("Address", "address", max_length=250)
     arbitrator = models.ForeignKey(User, related_name='Arbitrator', on_delete=models.CASCADE)
+    date = models.DateTimeField("Date play", null=False, default=datetime.date.today() + datetime.timedelta(days=10))
+    max_players = models.IntegerField("Maximum of Players", null=True)
     publishedBy = models.ForeignKey(User, related_name='game_published_by', on_delete=models.CASCADE)
     editedBy = models.ForeignKey(User, related_name='game_last_edited_by', on_delete=models.CASCADE)
     createdAt = models.DateTimeField("Created At", auto_now_add=True)

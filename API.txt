@@ -63,3 +63,33 @@ Response
     "message": "Password updated successfully",
     "data": []
 }
+
+
+
+
+
+-- What to do next?
+- Comment 
+- Create new games
+- register to a game 
+- Show profiles
+- add pictures to users
+
+https://github.com/viewflow/django-fsm
+
+
+
+
+-- Next:
+- Create a game as an Admin
+- Register current user in a game
+- Get All Games
+- Get Current Game (Show if the user is participating or not)
+- Get Users Games
+
+- History games, score, 
+
+- Tournament, Teams
+
+
+
