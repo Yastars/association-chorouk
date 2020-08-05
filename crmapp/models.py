@@ -88,6 +88,13 @@ class Post(models.Model):
 
 
 
+class Team(models.Model):
+    name = models.CharField('Title', max_length=255, null=False, blank=False)
+    owner = models.ForeignKey(User, related_name='team_owner', on_delete=models.CASCADE)
+    createdAt = models.DateTimeField("Created At", auto_now_add=True)
+    
+    def __str__(self):
+        return self.name
 
 
 #Class pour les Match 
@@ -99,21 +106,29 @@ class Game(models.Model):
     arbitrator = models.ForeignKey(User, related_name='Arbitrator', on_delete=models.CASCADE)
     date = models.DateTimeField("Date play", null=False)
     max_players = models.IntegerField("Maximum of Players", null=True)
+    is_private = models.BooleanField(default=False)
     publishedBy = models.ForeignKey(User, related_name='game_published_by', on_delete=models.CASCADE)
-    editedBy = models.ForeignKey(User, related_name='game_last_edited_by', on_delete=models.CASCADE)
+    editedBy = models.ForeignKey(User, related_name='game_last_edited_by', on_delete=models.CASCADE, blank=True)
     createdAt = models.DateTimeField("Created At", auto_now_add=True)
+    team_a = models.ForeignKey(Team, related_name='team_a', on_delete=models.CASCADE, null=True, blank=True)
+    team_b = models.ForeignKey(Team, related_name='team_b', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title
 
 
-class GameRegistration(models.Model):
+class TeamRegistration(models.Model):
     player = models.ForeignKey(User, related_name='player', on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, related_name='game_played', on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, related_name='team_joined', on_delete=models.CASCADE)
     position = models.CharField('Position in the game', max_length=20, null=False, blank=False, choices=GAME_POSITION)
     status = models.CharField('Status of the registration', max_length=20, null=False, blank=False, choices=GAME_REGISTRATION_STATUS)
 
     def __str__(self):
         return self.position
+
+
+
+
+    
 
 

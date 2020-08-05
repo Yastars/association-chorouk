@@ -16,7 +16,8 @@
 
 #run project
 1) django-admin runserver --settings=WWWchorouk.localsettings.py //  either this or (2)
-or) set DJANGO_SETTINGS_MODULE=WWWchorouk.localsettings
+or) 
+set DJANGO_SETTINGS_MODULE=WWWchorouk.localsettings
 
 1) pipenv shell 
 or use) pipenv run [commands below]

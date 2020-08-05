@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Account, Post, Game, GameRegistration
+from .models import Account, Post, Game, TeamRegistration, Team
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
@@ -8,7 +8,8 @@ from django.contrib.auth.models import User
 admin.site.register(Account)
 admin.site.register(Post)
 admin.site.register(Game)
-admin.site.register(GameRegistration)
+admin.site.register(TeamRegistration)
+admin.site.register(Team)
 
 
 # Define an inline admin descriptor for Account model

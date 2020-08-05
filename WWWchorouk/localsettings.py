@@ -176,6 +176,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 # SESSION_COOKIE_SECURE = True
 # SECURE_SSL_REDIRECT = True
 DEBUG = True
+import datetime
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=50),
+}
 
 
 REST_FRAMEWORK = {

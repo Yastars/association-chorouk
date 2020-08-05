@@ -97,3 +97,7 @@ https://github.com/viewflow/django-fsm
 
 
 
+so We need two fucntions:
+- Create Team, if there is no team create team, https://stackoverflow.com/questions/35543775/django-rest-create-object-with-foreign-key-using-serializers
+- Join Team, if there is a team join team 
+- 

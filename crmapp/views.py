@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, renderers
+from django.db.models import Q
 from rest_framework import status
-from .models import Account, Post, Game, GameRegistration
-# from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer, PostBaseSerializer
-from .serializers import AccountSerializer, PostSerializer, GameSerializer, GameRegistrationSerializer, PostBaseSerializer, UserSerializer, ChangePasswordSerializer
+from .models import Account, Post, Game, TeamRegistration, Team
+# from .serializers import AccountSerializer, PostSerializer, GameSerializer, TeamRegistrationSerializer, PostBaseSerializer
+from .serializers import AccountSerializer, PostSerializer, GameSerializer, TeamRegistrationSerializer, PostBaseSerializer, UserSerializer, ChangePasswordSerializer, TeamSerializer, TrCreateSerializer
 from .permissions import *
 from rest_framework.views import APIView
 from rest_framework.parsers import FileUploadParser
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.response import Response
 
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
@@ -17,6 +18,7 @@ from django.contrib.auth.models import User
 from rest_framework.parsers import JSONParser
 import io
 from rest_framework.serializers import ValidationError
+from rest_framework import viewsets
 
 # Create your views here.
 
@@ -174,67 +176,62 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class GameRegistrationAPIView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated] #Needed
-    queryset = GameRegistration.objects.all()
-    serializer_class = GameRegistrationSerializer
+class TeamRegistrationAPIView(generics.ListCreateAPIView):
+    # permission_classes = [IsAuthenticated] #Needed
+    queryset = TeamRegistration.objects.all()
+    serializer_class = TrCreateSerializer
 
+    # VERYYYY NEEDED, I need to put it in a separate view or something...
     # Return The Game Registrations For Current User Working
-    def get_queryset(self):
-        player = self.request.user
-        return GameRegistration.objects.all().filter(player=player)
-
-        # def get_object(self, queryset=None):
-        #     obj = self.request.user
-        #     return obj
-
-        # def update(self, request, *args, **kwargs):
-        #     self.object = self.get_object()
-
-    # def get_object(self, queryset=None):
-    #     obj = self.request.user
-    #     return obj
-
-    # def perform_create(self, request, *args, **kwargs):
-    #     serializer = self.get_serializer(data=request.data)
-    #     if serializer.is_valid():
-    #         # game = Game.objects.filter(id=(serializer.data.get("game")['game']))
-    #         # count_game_registered = GameRegistration.objects.filter(game=game, status='REGISTERED').count()
-
-    #         # if count_game_registered < game.max_players:
-    #         #     raise ValidationError('GameRegistration.create.Error: Max_players')
-    #         # serializer.save(player=self.request.user)
-    #         return serializer.data['game']['game']
-
-
+    # def get_queryset(self): #VERYYYY NEEDED
+    #     player = self.request.user
+    #     return TeamRegistration.objects.all().filter(player=player)
      
+    def perform_create(self, serializer):        
+        TRserializer = TrCreateSerializer(data=serializer.data)
+        TRserializer.is_valid(raise_exception=True)
+        TR_validated = TRserializer.validated_data
+        
+        newTR = TeamRegistration(
+            position= TR_validated['position'],
+            team= TR_validated['team'],
+            player = TR_validated['player'],
+            status = TR_validated['status']
+            )
 
-    def perform_create(self, serializer):
-        # GR = GameRegistration
-        GRserializer = GameRegistrationSerializer(data=serializer.data)
-        GRserializer.is_valid(raise_exception=True)
-        GR_validated = GRserializer.validated_data
+        game_request = TR_validated['game']
+        count_players_in_team = TeamRegistration.objects.filter(team=newTR.team, status="REGISTERED").count()
+        
+        game = Game.objects.get(Q(team_a = newTR.team) | Q(team_b = newTR.team)) # The game we are going to register to
+        current_user = self.request.user
+        
+        newTR.player = current_user
 
-        newGR = GameRegistration(
-            position= GR_validated['position'],
-            game= GR_validated['game'],
-            # player = GR_validated['player'],
-            player = None,
-            status = GR_validated['status'])
-
-        count_game_registered = GameRegistration.objects.filter(game=newGR.game, status="REGISTERED").count()
-        if GameRegistration.objects.filter(game=newGR.game, player = self.request.user).exists():
-            raise ValidationError('Current User {} Already Registered in this game : {}'.format(self.request.user.username, newGR.game.title) )
-        if count_game_registered > newGR.game.max_players:
-            raise ValidationError('GameRegistration.create.Error: Max_players')    
-        newGR.player = self.request.user
-        newGR.save()
-    #     # return type(self)
-        print("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOoo=", count_game_registered)
+        if game_request == game.id:
+            if TeamRegistration.objects.filter(team=newTR.team, player = current_user).exists():
+                raise ValidationError('Current User {} Already Registered in this team : {}'.format(current_user.username, newTR.team.name) )
+            elif count_players_in_team >= game.max_players:
+                newTR.status = "WAITINGLIST"
+                newTR.save()
+                raise ValidationError('TeamRegistration.create.Error: Max_players, you are registered in the awaiting list instead') 
+            else:
+                newTR.save()
+                return Response('Registered with succes!')
+        else:
+            raise ValidationError('Game and Team are not matched, please verify ')    
 
 
 
-        # count_game_registered = GameRegistration.objects.filter(game=game, status=REGISTERED)
-        # if count_game_registered < game.max_players:
-        #     raise ValidationError('GameRegistration.create.Error: Max_players')
-        # serializer.save(player=self.request.user)
+class TeamViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows teams to be viewed or edited.
+    """
+    queryset = Team.objects.all().order_by('-team_joined')
+    serializer_class = TeamSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+    # Needed for: returning players of a specific team
+    # @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
+    # def players(self, request, *args, **kwargs):
+    #     players = self.get_object()
+    #     return Response(snippet.highlighted)

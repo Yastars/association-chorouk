@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Account, Post, Game, GameRegistration
+from .models import Account, Post, Game, TeamRegistration, Team
 from django.contrib.auth.models import User
 
 class AccountSerializer(serializers.ModelSerializer):
@@ -32,9 +32,14 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = "__all__"
 
-class GameRegistrationSerializer(serializers.ModelSerializer):
+class TeamRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GameRegistration
+        model = TeamRegistration
+        fields = "__all__"
+
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
         fields = "__all__"
 
 
@@ -69,3 +74,18 @@ class ChangePasswordSerializer(serializers.Serializer):
     """
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+
+
+# Team Registration Creation Serializer
+class TrCreateSerializer(serializers.ModelSerializer):
+    game = serializers.IntegerField(required=True)
+
+    class Meta:
+        model = TeamRegistration
+        fields = ["game", 'position', 'status', 'player', 'team']
+
+    
+
+
+
+    
