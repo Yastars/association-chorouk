@@ -176,18 +176,24 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class TeamRegistrationAPIView(generics.CreateAPIView):
-    # permission_classes = [IsAuthenticated] #Needed
+class TeamRegistrationAPIView(APIView):
+    permission_classes = [IsAuthenticated] #Needed
     queryset = TeamRegistration.objects.all()
     serializer_class = TrCreateSerializer
 
     # VERYYYY NEEDED, I need to put it in a separate view or something...
     # Return The Game Registrations For Current User Working
-    # def get_queryset(self): #VERYYYY NEEDED
-    #     player = self.request.user
-    #     return TeamRegistration.objects.all().filter(player=player)
+    def get(self, request,formate = None): #VERYYYY NEEDED
+        player = self.request.user
+
+        games = TeamRegistration.objects.all().filter(player=player)
+        trSerializer = TrCreateSerializer(games, many=True)
+        
+        return Response({
+            'games':trSerializer.data
+        })
      
-    def perform_create(self, serializer):        
+    def post(self, serializer):        
         TRserializer = TrCreateSerializer(data=serializer.data)
         TRserializer.is_valid(raise_exception=True)
         TR_validated = TRserializer.validated_data

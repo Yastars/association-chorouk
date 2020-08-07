@@ -78,11 +78,11 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 # Team Registration Creation Serializer
 class TrCreateSerializer(serializers.ModelSerializer):
-    game = serializers.IntegerField(required=True)
+    game = serializers.IntegerField(required=True, write_only=True)
 
     class Meta:
         model = TeamRegistration
-        fields = ["game", 'position', 'status', 'player', 'team']
+        fields = ["game", "position", "status", "player", "team"]
 
     
 
