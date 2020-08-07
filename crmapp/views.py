@@ -176,7 +176,7 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class TeamRegistrationAPIView(generics.ListCreateAPIView):
+class TeamRegistrationAPIView(generics.CreateAPIView):
     # permission_classes = [IsAuthenticated] #Needed
     queryset = TeamRegistration.objects.all()
     serializer_class = TrCreateSerializer
