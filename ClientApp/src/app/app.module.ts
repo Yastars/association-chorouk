@@ -30,6 +30,13 @@ import { AuthService } from './services/auth.service';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { appInitializer } from './_helpers/app.initializer';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { RegisterComponent } from './Components/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+// Angular Material
+import { MaterialModule } from './material.module';
+
 
 
 @NgModule({
@@ -46,7 +53,8 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
     HeaderComponent,
     AboutPageComponent,
     BlogPageComponent,
-    SingleBlogPageComponent
+    SingleBlogPageComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,9 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthService] },
