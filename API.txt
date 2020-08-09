@@ -71,6 +71,22 @@ Response
 
 
 
+- Team Registrations: POST: http://127.0.0.1:8000/api/teamRegistrations/
+- Header: Authorization  = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2Mjg3NjM3LCJqdGkiOiI0ZWUyNDc3YjJhNDE0MTc3ODgzNGJmOGVmZDFhZjkwOSIsInVzZXJfaWQiOjUxfQ.zDUK5SQZ5ekIikWcoGP3a-b5hPvOU0-lwWqN0QnEDkw
+- Body : {
+    "game": 3,
+    "position": "defense",
+    "status": "REGISTERED",
+    "player": 1,
+    "team": 1
+
+}
+
+- Get Own Team Registrations for user: GET: http://127.0.0.1:8000/api/teamRegistrations/
+
+
+
+
 
 
 -- What to do next?
@@ -101,3 +117,8 @@ so We need two fucntions:
 - Create Team, if there is no team create team, https://stackoverflow.com/questions/35543775/django-rest-create-object-with-foreign-key-using-serializers
 - Join Team, if there is a team join team 
 - 
+
+
+What ww neeed to do : 
+ - Profile + pictures
+ - Change attributes of Team, Games, TeamRegistrations

@@ -1,0 +1,18 @@
+.mat-input-element, p{
+    color: #202020!important;
+}
+
+button {
+    background-color: #60bc0f;
+    margin: 0.5rem;
+}
+
+
+::ng-deep .mat-step-header .mat-step-icon-selected, ::ng-deep .mat-step-header .mat-step-icon-state-done, ::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: #60bc0f !important;
+}
+
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color:#60bc0f !important;
+}

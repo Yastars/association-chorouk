@@ -22,6 +22,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { AboutPageComponent } from './Pages/about-page/about-page.component';
 import { BlogPageComponent } from './Pages/blog-page/blog-page.component';
 import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // FontAwseome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -31,7 +32,7 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { appInitializer } from './_helpers/app.initializer';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { RegisterComponent } from './Components/register/register.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 // Angular Material

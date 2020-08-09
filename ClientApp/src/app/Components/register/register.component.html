@@ -8,31 +8,85 @@
                         <h4 class="card-header">تسجيل حساب جديد </h4>
                         <div class="card-body">
 
+
+
+                            <!-- Stepper -->
+                            <mat-horizontal-stepper dir="rtl" [linear]="false" #stepper>
+                                <mat-step [stepControl]="firstFormGroup">
+                                  <form [formGroup]="firstFormGroup">
+                                    <ng-template matStepLabel>بيانات الحساب</ng-template>
+                                    <div dir="rtl">
+                                        <mat-form-field  appearance="outline">
+                                            <mat-label>إسم المستخدم</mat-label>
+                                            <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div dir="rtl">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>البريد الإلكتروني</mat-label>
+                                            <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div dir="rtl">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>كلمة السر</mat-label>
+                                            <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div dir="rtl">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>أعد كلمة السر</mat-label>
+                                            <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                            <!-- <mat-hint>Hint</mat-hint> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                      <button mat-button matStepperNext>التالى</button>
+                                    </div>
+                                  </form>
+                                </mat-step>
+                                <mat-step [stepControl]="secondFormGroup">
+                                  <form [formGroup]="secondFormGroup">
+                                    <ng-template matStepLabel>بيانات شخصية</ng-template>
+                                    <mat-form-field>
+                                      <mat-label>Address</mat-label>
+                                      <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                                             required>
+                                    </mat-form-field>
+                                    <div>
+                                      <button mat-button matStepperPrevious>عودة</button>
+                                      <button mat-button matStepperNext>التالى</button>
+                                    </div>
+                                  </form>
+                                </mat-step>
+                                <mat-step>
+                                  <ng-template matStepLabel>إنهاء</ng-template>
+                                  <p class="done">أنت مسجل ، يرجى الاتصال بمسؤول لتفعيل حسابك</p>
+                                  <div>
+                                    <button mat-button matStepperPrevious>عودة</button>
+                                    <button mat-button (click)="stepper.reset()">إعادة تعيين</button>
+                                  </div>
+                                </mat-step>
+                              </mat-horizontal-stepper>
+                            <!-- Stepper end -->
+
+
+
+
+
+
+
+
                             <!-- <mat-form-field> -->
-                            <p dir="rtl">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Outline form field</mat-label>
-                                    <input matInput placeholder="Placeholder">
-                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                                    <mat-hint>Hint</mat-hint>
-                                </mat-form-field>
-                            </p>
-                            <p dir="rtl">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Outline form field</mat-label>
-                                    <input matInput placeholder="Placeholder">
-                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                                    <mat-hint>Hint</mat-hint>
-                                </mat-form-field>
-                            </p>
-                            <p dir="rtl">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Outline form field</mat-label>
-                                    <input matInput placeholder="Placeholder">
-                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                                    <mat-hint>Hint</mat-hint>
-                                </mat-form-field>
-                            </p>
+                            
+                           
                             <!-- </mat-form-field> -->
 
                         </div>
