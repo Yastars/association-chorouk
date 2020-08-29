@@ -13,12 +13,12 @@
               <!-- Stepper -->
               <mat-horizontal-stepper dir="rtl" [linear]="true" #stepper>
                 <mat-step [stepControl]="firstFormGroup">
-                  <form [formGroup]="firstFormGroup">
+                  <form [formGroup]="firstFormGroup" (ngSubmit)="onFirstStep()">
                     <ng-template matStepLabel>بيانات الحساب</ng-template>
 
                     <mat-form-field appearance="outline">
                       <mat-label>إسم المستخدم</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="username" required>
                       <mat-icon matSuffix>person</mat-icon>
                       <!-- <mat-hint>Hint</mat-hint> -->
                     </mat-form-field>
@@ -26,21 +26,21 @@
 
                     <mat-form-field appearance="outline">
                       <mat-label>البريد الإلكتروني</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="email" required>
                       <mat-icon matSuffix>email</mat-icon>
                       <!-- <mat-hint>Hint</mat-hint> -->
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
                       <mat-label>كلمة السر</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="password"  type="password" required>
                       <mat-icon matSuffix>lock</mat-icon>
                       <!-- <mat-hint>Hint</mat-hint> -->
                     </mat-form-field>
-                    
+
                     <mat-form-field appearance="outline">
                       <mat-label>أعد كلمة السر</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="firstCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="password2" type="password"  required>
                       <mat-icon matSuffix>lock</mat-icon>
                       <!-- <mat-hint>Hint</mat-hint> -->
                     </mat-form-field>
@@ -51,28 +51,28 @@
                   </form>
                 </mat-step>
                 <mat-step [stepControl]="secondFormGroup">
-                  <form [formGroup]="secondFormGroup">
+                  <form [formGroup]="secondFormGroup" (ngSubmit)="onSecondStep()">
                     <ng-template matStepLabel>بيانات شخصية</ng-template>
 
                     <mat-form-field class="col-12" appearance="outline">
                       <mat-label>رقم البطاقة الوطنية</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="secondCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="cin" required>
                       <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                     </mat-form-field>
                     <mat-form-field class="col-6" appearance="outline">
                       <mat-label>الإسم الشخصي</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="secondCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="first_name" required>
                       <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                     </mat-form-field>
                     <mat-form-field class="col-6" appearance="outline">
                       <mat-label>الإسم العائلي</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="secondCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="last_name" required>
                       <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                     </mat-form-field>
 
                     <div class="d-flex justify-content-between col-12">
-                      <label  id="gender-label">جنس</label>
-                      <mat-radio-group class="col-6" aria-labelledby="gender-label">
+                      <label id="gender-label">جنس</label>
+                      <mat-radio-group class="col-6" aria-labelledby="gender-label" formControlName="gender">
                         <mat-radio-button [value]="'M'">
                           ذكر
                         </mat-radio-button>
@@ -84,31 +84,35 @@
 
                     <mat-form-field class="col-6" appearance="outline">
                       <mat-label>رقم الهاتف</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="secondCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="phone" required>
                       <mat-icon matSuffix>phone</mat-icon>
                     </mat-form-field>
                     <mat-form-field class="col-6" appearance="outline">
                       <mat-label>المدينة</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="secondCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="city" required>
                       <mat-icon matSuffix>place</mat-icon>
                     </mat-form-field>
                     <mat-form-field class="col-12" appearance="outline">
                       <mat-label>العنوان</mat-label>
-                      <input matInput placeholder="Placeholder" formControlName="secondCtrl" required>
+                      <input matInput placeholder="Placeholder" formControlName="address" required>
                       <mat-icon matSuffix>home</mat-icon>
                     </mat-form-field>
 
                     <div>
-                      <button mat-button matStepperPrevious>عودة</button>
-                      <button mat-button matStepperNext>التالى</button>
+                      <button mat-button [disabled]="loading">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        التسجيل
+                      </button>
+                      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                     </div>
                   </form>
                 </mat-step>
                 <mat-step>
                   <ng-template matStepLabel>إنهاء</ng-template>
-                  <p class="done">يرجى التحقق من معلوماتك الشخصية قبل الضغط على التسجيل</p>
+                  <p class="done">تم تسجيلك بنجاح</p>
                   <div>
-                    <button mat-button (click)="stepper.reset()">التسجيل</button>
+                    <!-- <button mat-button (click)="stepper.reset()">التسجيل</button> -->
+                    <button mat-button routerLink="/login">تسجيل الدخول</button>
                   </div>
                 </mat-step>
               </mat-horizontal-stepper>

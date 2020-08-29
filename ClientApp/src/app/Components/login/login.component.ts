@@ -20,7 +20,9 @@ export class LoginComponent implements OnInit {
         private authService: AuthService
     ) { 
         // redirect to home if already logged in
+        console.log("From constructor", this.authService.userValue);
         if (this.authService.userValue) { 
+            console.log("Already Logged In");
             this.router.navigate(['/']);
         }
     }
@@ -33,6 +35,12 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+        console.log("From ngoninit", this.authService.userValue);
+        if (this.authService.userValue) { 
+            console.log("Already Logged In");
+            this.router.navigate(['/']);
+        }
     }
 
     // convenience getter for easy access to form fields

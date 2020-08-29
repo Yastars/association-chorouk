@@ -8,6 +8,7 @@ import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-pa
 import { AuthGuard } from './_helpers/auth.guard';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
+import { GameListComponent } from './Components/game-list/game-list.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'blog/:category/:id', component: BlogPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'games', component: GameListComponent },
 
 
   // otherwise redirect to home

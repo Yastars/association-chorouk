@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';    // add thi
 
 
 import { LoginComponent } from './Components/login/login.component';
-import { RegistrationComponent } from './Components/registration/registration.component';
 import { GameListComponent } from './Components/game-list/game-list.component';
 import { GameComponent } from './Components/game/game.component';
 import { GameRegistrationComponent } from './Components/game-registration/game-registration.component';
@@ -23,6 +22,7 @@ import { AboutPageComponent } from './Pages/about-page/about-page.component';
 import { BlogPageComponent } from './Pages/blog-page/blog-page.component';
 import { SingleBlogPageComponent } from './Pages/single-blog-page/single-blog-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginationComponent } from './Components/pagination/pagination.component';
 
 // FontAwseome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -44,7 +44,6 @@ import { MaterialModule } from './material.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent,
     GameListComponent,
     GameComponent,
     GameRegistrationComponent,
@@ -55,7 +54,8 @@ import { MaterialModule } from './material.module';
     AboutPageComponent,
     BlogPageComponent,
     SingleBlogPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +65,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,    
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthService] },

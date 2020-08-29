@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ["cin", "first_name", "last_name", "gender", "phone", "address", "city", "position", "description"]
+        fields = ["cin", "first_name", "last_name", "gender", "phone", "address", "city", "position", "description", "is_Accepted"]
         def create(self, validated_data):
             return Account.objects.create(**validated_data)
 
@@ -28,6 +28,10 @@ class PostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class GameSerializer(serializers.ModelSerializer):
+    publishedByUsername = serializers.CharField(source='publishedBy.username', read_only=True)
+    arbitratorByUsername = serializers.CharField(source='arbitrator.username', read_only=True)
+    team_aByName = serializers.CharField(source='team_a.name', read_only=True)
+    team_bByName = serializers.CharField(source='team_b.name', read_only=True)
     class Meta:
         model = Game
         fields = "__all__"
@@ -61,6 +65,18 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'email', 'is_active')
+
+        # def validate_username(self, value):
+        #     ModelClass = self.Meta.model
+        #     if ModelClass.objects.filter(username=value).exists():
+        #         raise serializers.ValidationError('already exists azbi')
+        #     return value
+
+        # def validate_email_(self, value):
+        #     ModelClass = self.Meta.model
+        #     if ModelClass.objects.filter(email_=value).exists():
+        #         raise serializers.ValidationError('already exists azbi')
+        #     return value
         # fields = "__all__"
         # extra_kwargs = {'password': {'write_only': True}}
 

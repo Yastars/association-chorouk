@@ -1,0 +1,26 @@
+.not-pointer a {
+    cursor: context-menu;
+}
+.blog-pagination .page-item .page-link {
+    min-width: 45px;
+    text-align: center;
+}
+
+.blog-pagination .page-item.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.blog-pagination .page-item.disabled .page-link {
+    color: #9287;
+}
+
+.pagination{
+    min-width: 446px;
+    position: absolute;
+}
+
+li.page-item:last-child{
+    position: absolute;
+    right: 0;
+}

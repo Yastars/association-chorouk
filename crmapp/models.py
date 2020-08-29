@@ -74,8 +74,8 @@ class Post(models.Model):
     title = models.CharField(max_length=255, null=False, blank=False)
     preview = models.TextField(max_length=600, verbose_name='Preview')
     content = models.TextField(max_length=2000, verbose_name='Detail Text')
-    #picture = models.FileField(blank=False, null=True)
-    picture = CloudinaryField('image')
+    picture = models.FileField(blank=True, null=True)
+    # picture = CloudinaryField('image')
     category = models.CharField(max_length=64, choices=CATEGORY_POSTS)
     publishedBy = models.ForeignKey(User, related_name='post_published_by', on_delete=models.CASCADE)
     editedBy = models.ForeignKey(User, related_name='post_last_edited_by', on_delete=models.CASCADE)
@@ -110,8 +110,8 @@ class Game(models.Model):
     publishedBy = models.ForeignKey(User, related_name='game_published_by', on_delete=models.CASCADE)
     editedBy = models.ForeignKey(User, related_name='game_last_edited_by', on_delete=models.CASCADE, blank=True)
     createdAt = models.DateTimeField("Created At", auto_now_add=True)
-    team_a = models.ForeignKey(Team, related_name='team_a', on_delete=models.CASCADE, null=True, blank=True)
-    team_b = models.ForeignKey(Team, related_name='team_b', on_delete=models.CASCADE, null=True, blank=True)
+    team_a = models.ForeignKey(Team, related_name='game_team_a', on_delete=models.CASCADE, null=True, blank=True)
+    team_b = models.ForeignKey(Team, related_name='game_team_b', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title

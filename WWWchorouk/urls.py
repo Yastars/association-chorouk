@@ -48,7 +48,7 @@ urlpatterns = [
     path(r'api/update_user/', views.ChangePasswordView.as_view(), name='update-user'),
     # trying regits
     path('api/register_user/', views.register_user, ),
-    # path(r'api/teams', views.TeamViewSet),
+    path(r'api/teams/', views.TeamViewSet),
 
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), # JWT Token refresh
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),    # HMAC , Hash- based message authentification code

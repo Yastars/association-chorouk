@@ -38,8 +38,8 @@ export class PostService {
 
   getAllPosts(nbPage: number, category?: string): Observable<HttpResponse<PostPageModel>> {
 
-    const requestPath = (category) ? this.baseUrl + `/posts/?format=json&category=${category}&page=${nbPage}` 
-    : this.baseUrl + `/posts/?format=json&page=${nbPage}`;
+    const requestPath = (category) ? this.baseUrl + `/api/posts/?format=json&category=${category}&page=${nbPage}` 
+    : this.baseUrl + `/api/posts/?format=json&page=${nbPage}`;
 
     return this.http.get<PostPageModel>(
       // Edit this shit

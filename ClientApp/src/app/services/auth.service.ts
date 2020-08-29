@@ -5,7 +5,9 @@ import { map } from 'rxjs/operators';
 
 
 import { User } from '../Entities/user';
+import { UserAccountDto } from '../Models/user-account-dto.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ServiceBase } from './service-base.service';
 
 const JWT_EXP = 5;
 const TIME_REFRESH_JWT = 4 * 10000;
@@ -21,10 +23,13 @@ export class AuthService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
+        private serviceBase: ServiceBase
+        
     ) {
         this.userSubject = new BehaviorSubject<User>(null);
         this.user = this.userSubject.asObservable();
+        this.environment.apiUrl = this.serviceBase.getBaseUrl();
     }
 
     public get userValue(): User {
@@ -79,5 +84,14 @@ export class AuthService {
 
     private stopRefreshTokenTimer() {
         clearTimeout(this.refreshTokenTimeout);
+    }
+
+
+    register(userAccountDto: UserAccountDto) {
+        let user = userAccountDto.user;
+        let account = userAccountDto.account;
+        return this.http.post<any>(`${this.environment.apiUrl}/api/register_user/`, {user, account}).pipe(map(userAccountDto => {
+            return userAccountDto;
+        }));
     }
 }

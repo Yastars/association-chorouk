@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics, renderers
+from rest_framework import generics, renderers, pagination
 from django.db.models import Q
 from rest_framework import status
 from .models import Account, Post, Game, TeamRegistration, Team
@@ -49,10 +49,17 @@ class PostAPIView(generics.ListCreateAPIView):
             queryset = queryset.filter(category=category)
         return queryset
 
+
+class GamePagination(pagination.PageNumberPagination):
+    page_size = 9
+    page_size_query_param = 'page_size'
+    # max_page_size = 1000
+    
 class GameAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminUser | ReadOnly]
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+    pagination_class = GamePagination
 
 
 
@@ -128,16 +135,22 @@ def register_user(request):
     
     # # # Create User
     user_json = request.data['user']
-    user = User.objects.create_user(user_json['username'], user_json['email'], password=user_json['password'], account=Account(account))
-    userSerializer = UserSerializer(user)
 
-    # Create Account
-    accountSerializer.is_valid(raise_exception=True)
-    accountSerializer.save(is_Accepted=False, user=user) 
-    
-    return Response({
-        'user':userSerializer.data,
-        'account': account })
+    # validate Username and Email, Unique
+    userSerializer = UserSerializer(data=user_json)
+    if userSerializer.is_valid():
+
+        user = User.objects.create_user(user_json['username'], user_json['email'], password=user_json['password'], account=Account(account))
+        userSerializer = UserSerializer(user)
+
+        # Create Account
+        accountSerializer.is_valid(raise_exception=True)
+        accountSerializer.save(is_Accepted=False, user=user) 
+        
+        return Response({
+            'user':userSerializer.data,
+            'account': account })
+    return Response(userSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
 
@@ -216,6 +229,10 @@ class TeamRegistrationAPIView(APIView):
         if game_request == game.id:
             if TeamRegistration.objects.filter(team=newTR.team, player = current_user).exists():
                 raise ValidationError('Current User {} Already Registered in this team : {}'.format(current_user.username, newTR.team.name) )
+            if TeamRegistration.objects.filter(team=game.team_a, player = current_user).exists():
+                raise ValidationError('Current User {} Already Registered in this team : {}'.format(current_user.username, newTR.team.name) )
+            if TeamRegistration.objects.filter(team=game.team_b, player = current_user).exists():
+                raise ValidationError('Current User {} Already Registered in this team : {}'.format(current_user.username, newTR.team.name) )
             elif count_players_in_team >= game.max_players:
                 newTR.status = "WAITINGLIST"
                 newTR.save()
@@ -237,7 +254,10 @@ class TeamViewSet(viewsets.ReadOnlyModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
 
     # Needed for: returning players of a specific team
-    # @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
-    # def players(self, request, *args, **kwargs):
-    #     players = self.get_object()
-    #     return Response(snippet.highlighted)
+    @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
+    def players(self, request, *args, **kwargs):
+        players = self.get_object()
+        return Response(snippet.highlighted)
+
+
+
