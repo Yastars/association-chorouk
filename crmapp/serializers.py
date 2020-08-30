@@ -32,6 +32,12 @@ class GameSerializer(serializers.ModelSerializer):
     arbitratorByUsername = serializers.CharField(source='arbitrator.username', read_only=True)
     team_aByName = serializers.CharField(source='team_a.name', read_only=True)
     team_bByName = serializers.CharField(source='team_b.name', read_only=True)
+    
+    # status = serializers.SerializerMethodField() # define a SerializerMethodField        
+
+    # def get_status(self, obj):
+    #     return "obj.get_absolute_url()" # return the absolute url of the object
+    
     class Meta:
         model = Game
         fields = "__all__"

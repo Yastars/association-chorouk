@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./blog-page.component.css'],
 })
 export class BlogPageComponent implements OnInit {
-  NBR_POSTS_PER_PAGE = 3;
+  NBR_POSTS_PER_PAGE = 2;
 
   next: string = null;
   previous: string = null;
@@ -63,11 +63,9 @@ export class BlogPageComponent implements OnInit {
       () => {
         this.next = this.allPosts.next;
         this.previous = this.allPosts.previous;
-        this.allPages = new Array(2); // Nbr of pages to show
+        // this.allPages = new Array(2); // Nbr of pages to show
 
-        this.nbrPages = Math.ceil(
-          this.allPosts.count / this.NBR_POSTS_PER_PAGE
-        );
+        
         
       } // On Complete
     );

@@ -19,6 +19,7 @@ from rest_framework.parsers import JSONParser
 import io
 from rest_framework.serializers import ValidationError
 from rest_framework import viewsets
+import datetime
 
 # Create your views here.
 
@@ -54,12 +55,36 @@ class GamePagination(pagination.PageNumberPagination):
     page_size = 9
     page_size_query_param = 'page_size'
     # max_page_size = 1000
-    
-class GameAPIView(generics.ListCreateAPIView):
+
+class GameAPIView(APIView):
     permission_classes = [IsAdminUser | ReadOnly]
     queryset = Game.objects.all()
     serializer_class = GameSerializer
     pagination_class = GamePagination
+    
+    def get(self, request,formate = None): #VERYYYY NEEDED
+        try:
+            queryset = Game.objects.all()
+            serialize_value = GameSerializer(queryset,many=True,context={'request': self.request}).data
+            current_user = self.request.user
+            
+            for g in serialize_value:
+                # dict_key = date.strftime('%Y-%m-%d')
+                date = datetime.datetime.strptime(g['date'], "%Y-%m-%d %H:%M:%S")
+                g['status'] = "open" if (date >= datetime.datetime.now() ) else "close"
+
+                # g['status'] = "registered" if (TeamRegistration.objects.filter(team=g['team_a'], player = current_user.id).exists()) else ""
+                # g['status'] = "registered" if (TeamRegistration.objects.filter(team=g['team_b'], player = current_user.id).exists()) else ""
+                g['team_a_status'] = "full" if (TeamRegistration.objects.filter(team=g['team_a'], status="REGISTERED").count() >= g['max_players']) else "not_full"
+                g['team_b_status'] = "full" if (TeamRegistration.objects.filter(team=g['team_b'], status="REGISTERED").count() >= g['max_players']) else "not_full"
+            
+            return_val = {
+                    'games': serialize_value
+                }    
+            return Response(return_val, status=status.HTTP_200_OK, content_type='application/json')
+        except Exception as E:
+            return Response({'error': str(E)}, status=status.HTTP_408_REQUEST_TIMEOUT, content_type='application/json')
+        
 
 
 

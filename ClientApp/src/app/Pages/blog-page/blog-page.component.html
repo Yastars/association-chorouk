@@ -74,7 +74,7 @@
                         <app-single-post *ngFor="let post of allPosts.results" [post]="post"></app-single-post>
                     </div>
 
-                    <app-pagination *ngIf="allPosts" [nbrPages]=nbrPages [currentPage]=currentPage [previous]=previous [next]=next></app-pagination>
+                    <app-pagination *ngIf="allPosts" [objectPerPage]=NBR_POSTS_PER_PAGE [count]=allPosts.count [currentPage]=currentPage [previous]=previous [next]=next></app-pagination>
                 </div>
             </div>
             <div class="col-lg-4">
