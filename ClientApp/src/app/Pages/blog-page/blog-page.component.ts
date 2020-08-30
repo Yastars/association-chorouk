@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./blog-page.component.css'],
 })
 export class BlogPageComponent implements OnInit {
-  NBR_POSTS_PER_PAGE = 5;
+  NBR_POSTS_PER_PAGE = 3;
 
   next: string = null;
   previous: string = null;
@@ -17,6 +17,7 @@ export class BlogPageComponent implements OnInit {
   allPages: number[];
   currentPage = -1;
   category?: string;
+  nbrPages: number;
 
   constructor(
     private postService: PostService,
@@ -25,10 +26,11 @@ export class BlogPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.currentPage =
-      typeof this.route.snapshot.paramMap.get('id') === 'number'
-        ? parseInt(this.route.snapshot.paramMap.get('id'), 10)
-        : -1;
+    try {
+      this.currentPage = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    } catch (error) {
+      this.currentPage = 1;
+    }
 
     this.category = this.route.snapshot.paramMap.get('category');
 
@@ -63,17 +65,10 @@ export class BlogPageComponent implements OnInit {
         this.previous = this.allPosts.previous;
         this.allPages = new Array(2); // Nbr of pages to show
 
-        const nbrPages = Math.floor(
+        this.nbrPages = Math.ceil(
           this.allPosts.count / this.NBR_POSTS_PER_PAGE
-        ); // 5 posts per page
-        const z = this.currentPage > 3 ? 3 : this.currentPage - 1;
-        for (
-          let i = this.currentPage - z;
-          i < this.currentPage + nbrPages && i - z <= this.allPosts.count;
-          i++
-        ) {
-          this.allPages[i - this.currentPage] = i - z;
-        }
+        );
+        
       } // On Complete
     );
   }

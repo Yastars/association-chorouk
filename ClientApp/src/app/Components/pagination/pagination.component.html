@@ -1,6 +1,6 @@
 <nav class="blog-pagination justify-content-center d-flex">
     <ul class="pagination">
-        <li [ngClass]="{disabled: !previous}" (click)="onClick(currentPage - 1)" [routerLink]="['../', currentPage - 1]"  class="page-item pointer">
+        <li [ngClass]="{disabled: !previous || currentPage <= 1}" (click)="onClick(currentPage - 1)" [routerLink]="['../', currentPage - 1]"  class="page-item pointer">
             <a class="page-link" aria-label="Previous">
                 <span aria-hidden="true">
                     <span class="lnr lnr-chevron-left">Previous</span>
@@ -9,9 +9,11 @@
         </li>
 
         <ng-container *ngFor="let page of allPages; let i = index">
-            <li *ngIf="page && i < 7" [ngClass]="{'active not-pointer': page === currentPage}" class="page-item"><a [routerLink]="['../',page]" (click)="onClick(page)"  class="page-link">{{ page }}</a></li>
+            <li *ngIf="page && i < 7" [ngClass]="{'active not-pointer': page === currentPage}" class="page-item">
+                <a [routerLink]="['../',page]" (click)="onClick(page)"  class="page-link">{{ page }}</a>
+            </li>
         </ng-container>
-        <li  [ngClass]="{disabled: !next}" (click)="onClick(currentPage + 1)" [routerLink]="['../', currentPage + 1]" class="page-item pointer">
+        <li  [ngClass]="{disabled: !next || currentPage > nbrPages - 1}" (click)="onClick(currentPage + 1)" [routerLink]="['../', currentPage + 1]" class="page-item pointer">
             <a class="page-link" aria-label="Next">
                 <span aria-hidden="true">
                     <span class="lnr lnr-chevron-right">Next</span>

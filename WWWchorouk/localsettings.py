@@ -193,7 +193,7 @@ REST_FRAMEWORK = {
         # 'rest_framework_simplejwt.authentication.AllowAny'
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5,
+    'PAGE_SIZE': 3,
     'DATETIME_FORMAT': "%Y-%m-%d",
     'DATE_FORMAT': "%Y-%m-%d",
     'DATETIME_INPUT_FORMATS': "%Y-%m-%d",
