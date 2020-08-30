@@ -1,4 +1,4 @@
-<nav class="blog-pagination justify-content-center d-flex">
+<nav class="blog-pagination justify-content-center d-flex disable-select">
     <ul class="pagination">
         <li [ngClass]="{disabled: !previous || currentPage <= 1}" (click)="onClick(currentPage - 1)" [routerLink]="['../', currentPage - 1]"  class="page-item pointer">
             <a class="page-link" aria-label="Previous">
