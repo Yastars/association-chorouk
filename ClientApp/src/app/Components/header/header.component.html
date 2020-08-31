@@ -41,7 +41,7 @@
                             <li routerLink ="about" routerLinkActive="active" class="nav-item pointer"><a class="nav-link">معلومات عنا</a></li>
                             <!-- <li class="nav-item pointer"><a class="nav-link" href="causes.html">Causes</a> -->
                             <li class="nav-item submenu dropdown pointer">
-                                <a  routerLink="/blog" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                <a  routerLink="/blog/1" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-haspopup="true" aria-expanded="false">مدونة</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item pointer" [routerLink]="['blog', 'sport', '1']"  ><a class="nav-link">رياضة</a>
@@ -52,6 +52,9 @@
                                 </ul>
                             </li>                           
                             <li class="nav-item pointer"><a class="nav-link" >اتصل بنا</a></li>
+                            <li class="nav-item pointer"><a  routerLink="games" class="nav-link" >مبارايات</a></li>
+                            <li *ngIf="(userObservable | async)" class="nav-item pointer"><a routerLink="logout" class="nav-link" > logout {{ user.username }} </a></li>
+                            <li *ngIf="!(userObservable | async)" class="nav-item pointer"><a routerLink="login" class="nav-link" > login  </a></li>
                         </ul>
                     </div>
                 </div>

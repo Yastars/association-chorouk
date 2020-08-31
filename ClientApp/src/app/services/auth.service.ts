@@ -32,6 +32,10 @@ export class AuthService {
         this.environment.apiUrl = this.serviceBase.getBaseUrl();
     }
 
+    public get userSubscription(): Observable<User> {
+        return this.userSubject.asObservable();
+    }
+    
     public get userValue(): User {
         return this.userSubject.value;
     }
