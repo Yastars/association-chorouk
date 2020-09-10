@@ -46,4 +46,8 @@ export class HeaderComponent implements OnInit {
       this.element.classList.remove('navbar-inverse');
     }
   }
+
+  onLogout() {
+    this.authService.logout();
+  }
 }

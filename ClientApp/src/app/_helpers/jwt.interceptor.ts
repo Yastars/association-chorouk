@@ -24,10 +24,16 @@ export class JwtInterceptor implements HttpInterceptor {
         const user = this.authService.userValue;
         const isLoggedIn = user && user.access;
         const isApiUrl = request.url.startsWith(this.environment.apiUrl);
+        const storageAccess = localStorage.getItem("access");
+        console.log("Storage Access = " + storageAccess);
 
         if(isLoggedIn && isApiUrl) {
             request = request.clone({
                 setHeaders: { Authorization: `Bearer ${user.access}`}
+            });
+        } else if (storageAccess) {
+            request = request.clone({
+                setHeaders: { Authorization: `Bearer ${storageAccess}`}
             });
         }
         return next.handle(request);

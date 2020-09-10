@@ -43,6 +43,8 @@ export class AuthService {
     login(username: string, password: string) {
         return this.http.post<any>(`${this.environment.apiUrl}/api/token/`, {username, password}).pipe(map(user => {
             user.username = username;
+            localStorage.setItem('access', user.access);
+            localStorage.setItem('refresh', user.refresh);
             this.userSubject.next(user);
             this.startRefreshTokenTimer();
             return user;
@@ -52,15 +54,41 @@ export class AuthService {
     logout() {
         this.http.post<any>(`${this.environment.apiUrl}/users/revoke-token`, {}, {withCredentials: true}).subscribe();
         this.stopRefreshTokenTimer();
+        localStorage.clear();
+        console.log("logout");
         this.userSubject.next(null);
         this.router.navigate(['/login']);
     }
 
+    getCurrentUserByAccess() {
+        return this.http.get<any>(`${this.environment.apiUrl}/api/current/`).pipe(map(user => {
+            // user.username = username;
+            // localStorage.setItem('access', user.access);
+            // localStorage.setItem('refresh', user.refresh);
+            user.username = user.user.username;
+            this.userSubject.next(user);
+            console.log("FROM GetCurrentBy Access ==== " + {user});
+            this.startRefreshTokenTimer();
+            return user;
+        }));
+    }
+
     refreshToken() {
+        let refresh_local;
+        
+            refresh_local = localStorage.getItem('refresh');
+            console.log("REFRESH_LOCAL ===== " + refresh_local);
+            this.getCurrentUserByAccess().subscribe((data)=> {
+                console.log({data});
+            });
+        
+        
         return this.http.post<any>(`${this.environment.apiUrl}/api/token/refresh/`, {refresh: this.userValue.refresh})
             .pipe(map((newAcces) => {
+                this.userValue.refresh = refresh_local;
                 this.userValue.access = newAcces;
                 this.userSubject.next(this.userValue);
+                localStorage.setItem('access', this.userValue.access);
                 this.startRefreshTokenTimer();
                 return this.userValue;
             }));

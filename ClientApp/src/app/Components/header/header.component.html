@@ -53,7 +53,7 @@
                             </li>                           
                             <li class="nav-item pointer"><a class="nav-link" >اتصل بنا</a></li>
                             <li class="nav-item pointer"><a  routerLink="games" class="nav-link" >مبارايات</a></li>
-                            <li *ngIf="(userObservable | async)" class="nav-item pointer"><a routerLink="logout" class="nav-link" > logout {{ user.username }} </a></li>
+                            <li *ngIf="(userObservable | async)" class="nav-item pointer"><a (click)="onLogout()" class="nav-link" > logout {{ user.username }} </a></li>
                             <li *ngIf="!(userObservable | async)" class="nav-item pointer"><a routerLink="login" class="nav-link" > login  </a></li>
                         </ul>
                     </div>
