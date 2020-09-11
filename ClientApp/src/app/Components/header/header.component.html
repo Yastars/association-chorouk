@@ -1,12 +1,14 @@
 <header class="header_area" (scroll)="onWindowScroll($event);" style="color: black;">
     <div class="main_menu">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light" >
+            <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" [routerLink]="'/'"><img src="assets/img/chorouk/logo-main.jpg" alt=""></a>
-                    
-                    <div class="nav-item pointer logo-label"><a class="nav-link">جمعية الشروق الفوسفاطية للرياضة</a></div>
+                    <a class="navbar-brand logo_h" [routerLink]="'/'"><img src="assets/img/chorouk/logo-main.jpg"
+                            alt=""></a>
+
+                    <div class="nav-item pointer logo-label"><a class="nav-link">جمعية الشروق الفوسفاطية للرياضة</a>
+                    </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -36,25 +38,34 @@
                             </li>
                             <li class="nav-item pointer"><a class="nav-link" href="contact.html">Contact</a></li>
                         </ul> MAX -->
-                        <ul class="nav navbar-nav menu_nav ml-auto"> 
-                            <li [routerLinkActiveOptions]="{ exact: true }" routerLink ="/" routerLinkActive="active" class="nav-item pointer"><a class="nav-link">بوابة</a></li>
-                            <li routerLink ="about" routerLinkActive="active" class="nav-item pointer"><a class="nav-link">معلومات عنا</a></li>
+                        <ul class="nav navbar-nav menu_nav ml-auto"  data-toggle="collapse" data-target="#navbarSupportedContent" >
+                            <li [routerLinkActiveOptions]="{ exact: true }" routerLink="/" routerLinkActive="active"
+                                class="nav-item pointer"><a class="nav-link">بوابة</a></li>
+                            <li routerLink="about" routerLinkActive="active" class="nav-item pointer"><a
+                                    class="nav-link">معلومات عنا</a></li>
                             <!-- <li class="nav-item pointer"><a class="nav-link" href="causes.html">Causes</a> -->
                             <li class="nav-item submenu dropdown pointer">
-                                <a  routerLink="/blog/1" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-haspopup="true" aria-expanded="false">مدونة</a>
+                                <a routerLink="/blog/1" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false">مدونة</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item pointer" [routerLink]="['blog', 'sport', '1']"  ><a class="nav-link">رياضة</a>
-                                    <li class="nav-item pointer"><a class="nav-link" routerLink="/blog/donation/1">تبرعات</a>
-                                    <li class="nav-item pointer"><a class="nav-link" routerLink="/blog/news/1">أخبار</a></li>
-                                    <li class="nav-item pointer"><a class="nav-link" routerLink="/blog/project/1">مشاريع</a></li>
-                                    <li class="nav-item pointer"><a class="nav-link" routerLink="/blog/match/1">مبارايات</a></li>
+                                    <li class="nav-item pointer" [routerLink]="['blog', 'sport', '1']"><a
+                                            class="nav-link">رياضة</a>
+                                    <li class="nav-item pointer"><a class="nav-link"
+                                            routerLink="/blog/donation/1">تبرعات</a>
+                                    <li class="nav-item pointer"><a class="nav-link" routerLink="/blog/news/1">أخبار</a>
+                                    </li>
+                                    <li class="nav-item pointer"><a class="nav-link"
+                                            routerLink="/blog/project/1">مشاريع</a></li>
+                                    <li class="nav-item pointer"><a class="nav-link"
+                                            routerLink="/blog/match/1">مبارايات</a></li>
                                 </ul>
-                            </li>                           
-                            <li class="nav-item pointer"><a class="nav-link" >اتصل بنا</a></li>
-                            <li class="nav-item pointer"><a  routerLink="games" class="nav-link" >مبارايات</a></li>
-                            <li *ngIf="(userObservable | async)" class="nav-item pointer"><a (click)="onLogout()" class="nav-link" > logout {{ user.username }} </a></li>
-                            <li *ngIf="!(userObservable | async)" class="nav-item pointer"><a routerLink="login" class="nav-link" > login  </a></li>
+                            </li>
+                            <li class="nav-item pointer"><a class="nav-link">اتصل بنا</a></li>
+                            <li class="nav-item pointer"><a routerLink="games" class="nav-link">مبارايات</a></li>
+                            <li *ngIf="(userObservable | async)" class="nav-item pointer"><a (click)="onLogout()"
+                                    class="nav-link"> logout {{ user.username }} </a></li>
+                            <li *ngIf="!(userObservable | async)" class="nav-item pointer"><a routerLink="login"
+                                    class="nav-link"> login </a></li>
                         </ul>
                     </div>
                 </div>
