@@ -45,6 +45,8 @@ export class GameListComponent implements OnInit {
         }
       } // On Complete
     );
+
+    console.log({games: this.gamePage});
   }
 
 }

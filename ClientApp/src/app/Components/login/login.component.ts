@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/Entities/user';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -13,21 +15,25 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     error = '';
 
+    userObservable: Observable<User>;
+
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private authService: AuthService
     ) { 
+        
+    }
+
+    ngOnInit() {
         // redirect to home if already logged in
         console.log("From constructor", this.authService.userValue);
         if (this.authService.userValue) { 
             console.log("Already Logged In");
             this.router.navigate(['/']);
         }
-    }
 
-    ngOnInit() {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
@@ -35,6 +41,17 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+        this.userObservable = this.authService.userSubscription;
+
+    
+    this.userObservable.subscribe(data => {
+        console.log({dataOKOKOK: data});
+        if(data) {
+            console.log("Already Logged In");
+            this.router.navigate(['/']);
+        }
+    });
 
         console.log("From ngoninit", this.authService.userValue);
         if (this.authService.userValue) { 
@@ -63,6 +80,8 @@ export class LoginComponent implements OnInit {
                 },
                 error: error => {
                     this.error = error;
+                    console.log("WAHYAAAAAAA============");
+                    console.log({error});
                     this.loading = false;
                 }
             });

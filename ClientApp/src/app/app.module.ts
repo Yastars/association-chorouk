@@ -37,6 +37,7 @@ import { RegisterComponent } from './Components/register/register.component';
 
 // Angular Material
 import { MaterialModule } from './material.module';
+import { GameCardComponent } from './Components/game-list/game-card/game-card.component';
 
 
 
@@ -55,7 +56,8 @@ import { MaterialModule } from './material.module';
     BlogPageComponent,
     SingleBlogPageComponent,
     RegisterComponent,
-    PaginationComponent
+    PaginationComponent,
+    GameCardComponent
   ],
   imports: [
     BrowserModule,

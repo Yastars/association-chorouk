@@ -1,0 +1,16 @@
+
+
+.card-container {
+    width: 333px;
+    height: 222px;
+
+    .card-background {
+        background: rgb(121, 175, 193);
+        background: linear-gradient(
+          333deg,
+          rgba(121, 175, 193, 1) 0%,
+          rgba(139, 186, 98, 1) 57%,
+          rgba(226, 237, 208, 1) 100%
+        );
+      }
+}

@@ -13,6 +13,11 @@ export class Game {
   team_a: number;
   team_b: number;
 
+  status: string;
+  is_registered: boolean;
+  team_a_status: string;
+  team_b_status: string;
+
   // Helpful DTO fields
   publishedByUsername: string;
   arbitratorByUsername: string;
