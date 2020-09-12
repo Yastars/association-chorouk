@@ -77,33 +77,30 @@ export class AuthService {
         // user.username = username;
         // localStorage.setItem('access', user.access);
         // localStorage.setItem('refresh', user.refresh);
-        user.username = user.user.username;
-        this.userSubject.next(user);
-        console.log('FROM GetCurrentBy Access ==== ' + { user });
+        let updatedUser = this.userValue;
+        updatedUser.username = user.user.username;
+        this.userSubject.next(updatedUser);
         return user;
       })
     );
   }
 
-  refreshToken() {
-    let refresh_local;
-
-    if(!this.userValue) {
-      refresh_local = localStorage.getItem('refresh');
-      if (refresh_local) {
-        let newUserLocalRefresh = new User();
-        newUserLocalRefresh.refresh = refresh_local;
-        this.userSubject.next(newUserLocalRefresh);
-
-        this.getCurrentUserByAccess().subscribe((data) => {
-          console.log({ data });
-          newUserLocalRefresh.username = data.user.username;
-          this.userSubject.next(newUserLocalRefresh);
-          this.startRefreshTokenTimer();
-        });
-      }
+  refreshUserFromLocal() {
+    let newUserLocalRefresh = new User(localStorage.getItem('refresh'), localStorage.getItem('access'));
+    if (!newUserLocalRefresh.refresh) 
+    {
+      console.log("Could not Log In, using LocalStorage");
+      return null;
     }
-    
+    this.userSubject.next(newUserLocalRefresh);
+    console.log("REFRESHED BY LOCAL" );
+    console.log({UserSubject: this.userValue});
+    console.log({newUserLocalRefresh: newUserLocalRefresh});
+    return newUserLocalRefresh;
+  }
+
+  refreshToken() {
+    console.log({RefreshTokenUSer: this.userValue});
     return this.http
       .post<any>(`${this.environment.apiUrl}/api/token/refresh/`, {
         refresh: this.userValue.refresh,
@@ -111,14 +108,20 @@ export class AuthService {
       .pipe(
         map((newAcces) => {
           let updatedUser = this.userValue;
+
+          
+
           updatedUser.access = newAcces.access;
           this.userSubject.next(updatedUser);
           localStorage.setItem('access', this.userValue.access);
           this.startRefreshTokenTimer();
-          console.log("***********************************");
-          console.log({UPDATED_USER_IMPORTANT: this.userValue});
-          console.log("***********************************");
-          return this.userValue;
+
+          console.log("updated user");
+          console.log({updatedUser});
+
+          console.log("updated user");
+          console.log({UserValue: this.userValue});
+          // return this.userValue;
         })
       );
   }

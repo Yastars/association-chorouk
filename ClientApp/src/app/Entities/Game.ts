@@ -29,5 +29,5 @@ export interface GamePage {
   count: number;
   next: string;
   previous: string;
-  results: Game[];
+  games: Game[];
 }

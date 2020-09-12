@@ -3,7 +3,7 @@
     <h1 class="h1">Chorouk Games</h1>
     <h2 class="h2">Play, score and win!</h2>
 
-    <ng-container *ngIf="gamePage">
-        <app-game-card  [game]="game" *ngFor="let game of gamePage.results"></app-game-card>
-    </ng-container>
+    <div class="d-flex flex-wrap justify-content-between" *ngIf="gamePage">
+        <app-game-card  [game]="game" *ngFor="let game of gamePage.games"></app-game-card>
+    </div>
 </div>

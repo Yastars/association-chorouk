@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     error = '';
 
-    userObservable: Observable<User>;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -41,23 +40,6 @@ export class LoginComponent implements OnInit {
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
-        this.userObservable = this.authService.userSubscription;
-
-    
-    this.userObservable.subscribe(data => {
-        console.log({dataOKOKOK: data});
-        if(data) {
-            console.log("Already Logged In");
-            this.router.navigate(['/']);
-        }
-    });
-
-        console.log("From ngoninit", this.authService.userValue);
-        if (this.authService.userValue) { 
-            console.log("Already Logged In");
-            this.router.navigate(['/']);
-        }
     }
 
     // convenience getter for easy access to form fields

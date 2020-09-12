@@ -25,6 +25,7 @@ export class GameListComponent implements OnInit {
     this.gameService.getGames(1).subscribe(
       result => {
         this.gamePage = { ...result.body };
+        console.log({gamePage: this.gamePage});
       },
       (error) => console.log('Error Observable GameListComponent.ngOnInit()'),
       () => {
@@ -46,7 +47,7 @@ export class GameListComponent implements OnInit {
       } // On Complete
     );
 
-    console.log({games: this.gamePage});
+    
   }
 
 }
