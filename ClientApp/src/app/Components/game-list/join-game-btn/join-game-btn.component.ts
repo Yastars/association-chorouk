@@ -7,9 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class JoinGameBtnComponent implements OnInit {
 
-  @Input() is_registered;
-  @Input() team_status;
-  @Input() team_ID;
+  @Input() isRegistered;
+  @Input() isTeamFull;
+  @Input() teamId;
   @Input() bgColor;
 
   constructor() { }

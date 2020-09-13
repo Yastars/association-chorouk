@@ -2,6 +2,7 @@
   width: 400px;
   height: 555px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background: aliceblue;
 
   .teams-container {
     width: 100%;
@@ -22,13 +23,13 @@
     }
   
     .team-a {
-    //   text-shadow: 5px 2px 4px rgb(0,155,131),5px 3px 4px rgb(0,155,131);
+      // text-shadow: 5px 2px 4px rgb(0,155,131),5px 3px 4px rgb(0,155,131);
     text-align: left;
     align-self: flex-start;
     }
   
     .team-b {
-    //   text-shadow: 5px 2px 4px rgb(0,44,93),5px 3px 4px rgb(0,44,93);
+      // text-shadow: 5px 2px 4px rgb(0,44,93),5px 3px 4px rgb(0,44,93);
     text-align: right;
     align-self: flex-end;
     margin-bottom: 15px;

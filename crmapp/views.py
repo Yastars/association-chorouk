@@ -71,19 +71,22 @@ class GameAPIView(APIView):
             for g in serialize_value:
                 # dict_key = date.strftime('%Y-%m-%d')
                 date = datetime.datetime.strptime(g['date'], "%Y-%m-%d %H:%M:%S")
-                g['status'] = "open" if (date >= datetime.datetime.now() ) else "close"
+                g['isOpen'] = True if (date >= datetime.datetime.now() ) else False
 
-                g['is_registered'] = False
+                g['isRegistered'] = False
                 # if TeamRegistration.objects.filter(team=newTR.team, player = current_user).exists():
                 # raise ValidationError('Current User {} Already Registered in this team : {}'.format(current_user.username, newTR.team.name) )
                 if TeamRegistration.objects.filter(team=g['team_a'], player=current_user).exists():
                     print()
-                    g['is_registered'] = True
+                    g['isRegisteredA'] = True
+                    g['isRegistered'] = True
                 elif TeamRegistration.objects.filter(team=g['team_b'], player=current_user).exists():
-                    g['is_registered'] = True
+                    g['isRegisteredB'] = True
+                    g['isRegistered'] = True
+                
 
-                g['team_a_status'] = "full" if (TeamRegistration.objects.filter(team=g['team_a'], status="REGISTERED").count() >= g['max_players']) else "not_full"
-                g['team_b_status'] = "full" if (TeamRegistration.objects.filter(team=g['team_b'], status="REGISTERED").count() >= g['max_players']) else "not_full"
+                g['isTeamAfull'] = True if (TeamRegistration.objects.filter(team=g['team_a'], status="REGISTERED").count() >= g['max_players']) else False
+                g['isTeamBfull'] = True if (TeamRegistration.objects.filter(team=g['team_b'], status="REGISTERED").count() >= g['max_players']) else False
             
             return_val = {
                     'games': serialize_value

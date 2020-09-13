@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faSadTear } from '@fortawesome/free-regular-svg-icons';
 import { Game } from 'src/app/Entities/Game';
 
 @Component({
@@ -9,6 +10,9 @@ import { Game } from 'src/app/Entities/Game';
 export class GameCardComponent implements OnInit {
 
   @Input() game: Game;
+
+  //font awesome
+  faSadTear = faSadTear;
   
   constructor() { }
 
