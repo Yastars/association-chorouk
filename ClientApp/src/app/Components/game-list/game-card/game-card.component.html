@@ -1,5 +1,23 @@
-<div class="card-container">
-    <div class="card-background">
-        Hello
+<div class="card-container d-flex flex-column mb-4 pb-4">
+    <div class="row m-0 teams-container">
+        <div class="col-12 team-a"> {{ game.team_aByName }}</div>
+        <div class="col-12 team-b"> {{ game.team_bByName }} </div>
+    </div>
+
+    <div class="w-100 p-3">
+        <div class="id"> #{{ game.id }}</div>
+        <h3 class="title"> {{ game.title }}</h3>
+        <div class="preview"> {{ game.preview }}</div>
+        <div class="d-flex justify-content-between address-maxplayers"> 
+            <span>{{ game.address }}</span>
+            <span>{{ game.max_players }}</span>
+        </div>
+        is_registered
+team_status;
+team_ID;
+bgColor;
+        <div class="preview"> {{ game.date }}</div>
+        <app-join-game-btn [team_ID]="game.team_a"></app-join-game-btn>
+        <app-join-game-btn></app-join-game-btn>
     </div>
 </div>
