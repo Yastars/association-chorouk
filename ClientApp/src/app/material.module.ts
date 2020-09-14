@@ -17,7 +17,7 @@ import {NgModule} from '@angular/core';
 // import {MatChipsModule} from '@angular/material/chips';
 import {MatStepperModule} from '@angular/material/stepper';
 // import {MatDatepickerModule} from '@angular/material/datepicker';
-// import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 // import {MatDividerModule} from '@angular/material/divider';
 // import {MatExpansionModule} from '@angular/material/expansion';
 // import {MatGridListModule} from '@angular/material/grid-list';
@@ -61,7 +61,7 @@ import {MatRadioModule} from '@angular/material/radio';
     // MatChipsModule,
     MatStepperModule,
     // MatDatepickerModule,
-    // MatDialogModule,
+    MatDialogModule,
     // MatDividerModule,
     // MatExpansionModule,
     // MatGridListModule,

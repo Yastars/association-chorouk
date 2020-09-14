@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faSadTear } from '@fortawesome/free-regular-svg-icons';
+import { faFrown } from '@fortawesome/free-regular-svg-icons';
+import { faClock, faMapMarker, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Game } from 'src/app/Entities/Game';
 
 @Component({
@@ -12,7 +13,10 @@ export class GameCardComponent implements OnInit {
   @Input() game: Game;
 
   //font awesome
-  faSadTear = faSadTear;
+  faSadTear = faFrown;
+  faMapMarker = faMapMarker;
+  faUsers = faUsers;
+  faClock = faClock;
   
   constructor() { }
 

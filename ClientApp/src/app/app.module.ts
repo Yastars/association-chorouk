@@ -39,6 +39,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { MaterialModule } from './material.module';
 import { GameCardComponent } from './Components/game-list/game-card/game-card.component';
 import { JoinGameBtnComponent } from './Components/game-list/join-game-btn/join-game-btn.component';
+import { PositionPickerDialogComponent } from './Components/game-list/position-picker-dialog/position-picker-dialog.component';
 
 
 
@@ -59,7 +60,8 @@ import { JoinGameBtnComponent } from './Components/game-list/join-game-btn/join-
     RegisterComponent,
     PaginationComponent,
     GameCardComponent,
-    JoinGameBtnComponent
+    JoinGameBtnComponent,
+    PositionPickerDialogComponent
   ],
   imports: [
     BrowserModule,

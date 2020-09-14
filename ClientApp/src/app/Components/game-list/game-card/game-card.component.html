@@ -1,4 +1,4 @@
-<div class="card-container d-flex justify-content-between flex-column mb-4">
+<div class="card-container d-flex justify-content-between flex-column mr-2 mb-4">
     <div class="row m-0 teams-container">
         <div class="col-12 team-a"> {{ game.team_aByName }}</div>
         <div class="col-12 team-b"> {{ game.team_bByName }} </div>
@@ -8,17 +8,24 @@
         <div class="id"> #{{ game.id }}</div>
         <h3 class="title"> {{ game.title }}</h3>
         <div class="preview px-2"> {{ game.preview }}</div>
-        <div class="address px-2"> {{ game.address }}</div>
-        <div class="max_players px-2"> {{ game.max_players }}</div>
-        <div class="date px-2"> {{ game.date }}</div>
+        <div class="address px-2"> 
+            <fa-icon class="icon" size="lg" [icon]="faMapMarker"></fa-icon> {{ game.address }}
+        </div>
+        <div class="max_players px-2"> 
+            <fa-icon class="icon" size="lg" [icon]="faUsers"></fa-icon> {{ game.max_players }}
+        </div>
+        <div class="date px-2"> 
+            <fa-icon class="icon" size="lg" [icon]="faClock"></fa-icon> {{ game.date }}
+        </div>
     </div>
-    <div *ngIf="!game.isOpen" class="div">
-        <fa-icon class="faBars" [icon]="faSadTear"></fa-icon> DEADLINE IS OVER
+    <div *ngIf="!game.isOpen" class="deadline-over py-4">
+        
+        <fa-icon [icon]="faSadTear"></fa-icon> DEADLINE IS OVER
     </div>
     <div *ngIf="game.isOpen" class="row m-0">
-        <app-join-game-btn class="col-6 p-0" [isRegistered]="game.isRegistered" [isTeamFull]="game.isTeamAfull"
+        <app-join-game-btn class="col-6 p-0" style="border-radius: 0 0 20px 0;" [isRegistered]="game.isRegistered" [isTeamFull]="game.isTeamAfull"
             [teamId]="game.team_a" [bgColor]="'rgb(0,155,131)'"></app-join-game-btn>
-        <app-join-game-btn class="col-6 p-0" [isRegistered]="game.isRegistered" [isTeamFull]="game.isTeamBfull"
+        <app-join-game-btn class="col-6 p-0" style="border-radius: 0 0 0 20px;" [isRegistered]="game.isRegistered" [isTeamFull]="game.isTeamBfull"
             [teamId]="game.team_b" [bgColor]="'rgb(0,44,93)'"></app-join-game-btn>
     </div>
 </div>

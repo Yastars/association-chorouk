@@ -2790,3 +2790,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
  -moz-user-select: none; /* Firefox */
  -ms-user-select: none; /* Internet Explorer/Edge */
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

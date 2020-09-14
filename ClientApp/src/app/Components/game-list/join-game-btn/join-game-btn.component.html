@@ -1,3 +1,8 @@
-<button class="join-btn w-100" [ngStyle]="{'background-color':bgColor}">
+<button class="join-btn w-100" (click)="openDialog()" (mouseover)="hover=true" (mouseleave)="hover=false" 
+[ngStyle]="{
+    'background-color': hover ? 'white' : bgColor,
+    'color': hover ? bgColor : 'white',
+    'border-top': hover ? '1px solid ' + bgColor : 'unset',
+    'text-decoration': hover ? 'underline 2px ' + bgColor : 'unset'}">
     JOIN TEAM
 </button>

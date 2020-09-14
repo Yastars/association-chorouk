@@ -3,8 +3,8 @@
     <h1 class="h1">Chorouk Games</h1>
     <h2 class="h2">Play, score and win!</h2>
 
-    <div class="d-flex flex-wrap justify-content-between" *ngIf="gamePage">
-        <app-game-card  [game]="game" *ngFor="let game of gamePage.games"></app-game-card>
+    <div class="d-flex flex-wrap justify-content-center justify-content-md-around" *ngIf="gamePage">
+        <app-game-card  class="my-4" [game]="game" *ngFor="let game of gamePage.games"></app-game-card>
         <div class="fake-card"></div>
         <div class="fake-card"></div>
         <div class="fake-card"></div>
